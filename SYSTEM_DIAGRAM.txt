@@ -1,0 +1,273 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    COMPLETE AGENT SYSTEM ARCHITECTURE                        ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              INPUT SOURCES                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  📱 Mobile (WiFi)          🌐 Mobile (Remote)         💻 Command Line       │
+│  192.168.15.211:800X       Vercel UI                  curl localhost:800X   │
+│         │                         │                           │              │
+│         └─────────────────────────┼───────────────────────────┘              │
+│                                   │                                          │
+└───────────────────────────────────┼──────────────────────────────────────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    │                               │
+                    ▼                               ▼
+        ┌──────────────────┐            ┌──────────────────┐
+        │   DIRECT PATH    │            │   CLOUD PATH     │
+        │   (Instant)      │            │   (~30s delay)   │
+        └──────────────────┘            └──────────────────┘
+                    │                               │
+                    │                               ▼
+                    │                   ┌──────────────────────┐
+                    │                   │  Vercel Web UI       │
+                    │                   │  (Public URL)        │
+                    │                   └──────────────────────┘
+                    │                               │
+                    │                               ▼
+                    │                   ┌──────────────────────┐
+                    │                   │  GitHub Repo Queue   │
+                    │                   │  (agent-queue)       │
+                    │                   └──────────────────────┘
+                    │                               │
+                    │                               ▼
+                    │                   ┌──────────────────────┐
+                    │                   │  Worker (Polls)      │
+                    │                   │  worker-simple.py    │
+                    │                   └──────────────────────┘
+                    │                               │
+                    └───────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         LOCAL AGENT SERVERS                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐         │
+│  │  diaperstops     │  │  reno-app        │  │  ClimateWardrobe │         │
+│  │  Port: 8001      │  │  Port: 8002      │  │  Port: 8003      │         │
+│  │  agent-server.py │  │  agent-server.py │  │  agent-server.py │         │
+│  └──────────────────┘  └──────────────────┘  └──────────────────┘         │
+│                                                                              │
+│  ┌──────────────────┐  ┌──────────────────┐                                │
+│  │  translator      │  │  android-app     │                                │
+│  │  Port: 8004      │  │  Port: 8005      │                                │
+│  │  agent-server.py │  │  agent-server.py │                                │
+│  └──────────────────┘  └──────────────────┘                                │
+│                                                                              │
+│  Managed by: agent-control.sh                                               │
+│  Commands: start, stop, restart, status, test, start-all, stop-all         │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+                        ┌──────────────────────┐
+                        │   KIRO INTEGRATION   │
+                        │   kiro execute       │
+                        └──────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           EXECUTION LAYER                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  • Full Kiro capabilities                                                   │
+│  • Access to all code and context                                           │
+│  • Process management (start/stop/kill)                                     │
+│  • Background execution                                                     │
+│  • Real-time monitoring                                                     │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+                        ┌──────────────────────┐
+                        │   YOUR CODE/TASKS    │
+                        │   Execute & Return   │
+                        └──────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              API ENDPOINTS                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+POST /execute
+├─ Input:  {"task": "string", "background": boolean}
+└─ Output: {"success": boolean, "stdout": "string", "stderr": "string"}
+
+GET /processes
+└─ Output: {"project": "string", "processes": [...]}
+
+POST /kill
+├─ Input:  {"pid": number}
+└─ Output: {"success": boolean, "message": "string"}
+
+POST /stop-all
+└─ Output: {"success": boolean, "killed": [pids]}
+
+GET /
+└─ Output: {"status": "running", "project": "string", "port": number}
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            CONTROL COMMANDS                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+./agent-control.sh start <project>     # Start one server
+./agent-control.sh stop <project>      # Stop one server
+./agent-control.sh restart <project>   # Restart one server
+./agent-control.sh status [project]    # Show status
+./agent-control.sh test <project>      # Test API
+./agent-control.sh start-all           # Start all servers
+./agent-control.sh stop-all            # Stop all servers
+./agent-control.sh list                # List all projects
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              PORT MAPPING                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+8001 → diaperstops.com
+8002 → reno-app
+8003 → ClimateWardrobe
+8004 → translator
+8005 → android-app-template
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            INTEGRATION MODES                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+MODE 1: LOCAL DIRECT (Recommended for Development)
+┌────────────────────────────────────────────────────────────────┐
+│ Your Command → Local API → Kiro → Execute                      │
+│ Speed: ⚡ Instant | Cost: $0 | Network: Same WiFi              │
+└────────────────────────────────────────────────────────────────┘
+
+MODE 2: CLOUD QUEUE (Recommended for Remote)
+┌────────────────────────────────────────────────────────────────┐
+│ Mobile → Vercel → GitHub → Worker → Local API → Kiro → Execute│
+│ Speed: 🐌 ~30s | Cost: $0 | Network: Any (Internet)           │
+└────────────────────────────────────────────────────────────────┘
+
+MODE 3: MOBILE SERVER (Recommended for Simple UI)
+┌────────────────────────────────────────────────────────────────┐
+│ Mobile → Simple Server → (Choose: Local API or Cloud)         │
+│ Speed: ⚡ Instant | Cost: $0 | Network: Same WiFi              │
+└────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              FILE STRUCTURE                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+projects/
+├── agent-control.sh                    # Master control script
+├── AGENT_SERVERS_GUIDE.md              # Complete guide
+├── AGENT_QUICK_REF.md                  # Quick reference
+├── AGENT_SYSTEM_DEPLOYED.md            # Deployment details
+├── CLOUD_LOCAL_INTEGRATION.md          # Integration guide
+├── COMPLETE_AGENT_SYSTEM.md            # Final summary
+├── SYSTEM_DIAGRAM.txt                  # This file
+│
+├── templates/
+│   ├── agent-server.py                 # Universal template
+│   └── README.md                       # Template docs
+│
+├── diaperstops.com/
+│   ├── agent-server.py                 # Local API server
+│   ├── start-agent-server.sh           # Startup script
+│   └── .agent-task.sh                  # Task handler
+│
+├── reno-app/
+│   ├── agent-server.py
+│   ├── start-agent-server.sh
+│   └── .agent-task.sh
+│
+├── ClimateWardrobe/
+│   ├── agent-server.py
+│   ├── start-agent-server.sh
+│   └── .agent-task.sh
+│
+├── translator/
+│   ├── agent-server.py
+│   ├── start-agent-server.sh
+│   └── .agent-task.sh
+│
+└── android-app-template/
+    ├── agent-server.py
+    ├── start-agent-server.sh
+    └── .agent-task.sh
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            QUICK START                                       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+1. Start all servers:
+   $ cd ~/projects
+   $ ./agent-control.sh start-all
+
+2. Check status:
+   $ ./agent-control.sh status
+
+3. Execute a task:
+   $ curl -X POST http://localhost:8001/execute \
+     -H "Content-Type: application/json" \
+     -d '{"task":"show me the README"}'
+
+4. Monitor processes:
+   $ curl http://localhost:8001/processes
+
+5. Stop all:
+   $ ./agent-control.sh stop-all
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              FEATURES                                        ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+✅ Machine-Agnostic (Linux, Mac, Windows)
+✅ Kiro Integration (Full capabilities)
+✅ Process Management (Start/Stop/Kill)
+✅ Mobile-Friendly (HTTP API)
+✅ Zero Cost ($0 to run)
+✅ Background Execution
+✅ Real-time Monitoring
+✅ Graceful Shutdown
+✅ Complete Documentation
+✅ Easy to Use
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              COST BREAKDOWN                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Local Agent Servers:        $0
+Master Control Script:      $0
+Kiro Integration:           $0
+Cloud Queue (optional):     $0
+Mobile Server (optional):   $0
+Temporal (optional):        $0 (self-host) or $25/mo (cloud)
+─────────────────────────────────
+TOTAL:                      $0
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              STATUS                                          ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+✅ All 5 projects configured
+✅ All scripts executable
+✅ Complete documentation written
+✅ Kiro integration working
+✅ Process management working
+✅ Mobile access possible
+✅ Zero cost achieved
+✅ Machine-agnostic design
+
+STATUS: COMPLETE AND READY TO USE
+DATE:   2026-04-17
+COST:   $0

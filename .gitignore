@@ -1,0 +1,11 @@
+# Ignore all subdirectories (project repos)
+*/
+
+# But include documentation files at root
+!*.md
+!*.txt
+!*.sh
+
+# Ignore lock files
+*.lock
+.~lock*
