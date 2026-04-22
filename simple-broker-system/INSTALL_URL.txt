@@ -1,0 +1,32 @@
+🚀 ONE-LINE INSTALL
+
+Copy and paste this into your terminal:
+
+curl -fsSL https://raw.githubusercontent.com/mluk132/agent-system-docs/main/simple-broker-system/install.sh | bash
+
+---
+
+What it does:
+✅ Checks prerequisites (Python 3, pip3, git)
+✅ Clones repo to ~/simple-broker-system
+✅ Installs dependencies (psutil, requests)
+✅ Prompts for configuration
+✅ Creates .env file
+✅ Starts agent servers
+✅ Optionally starts worker
+
+After install:
+📁 Location: ~/simple-broker-system
+📚 Docs: ~/simple-broker-system/START_HERE.md
+🚀 Start: cd ~/simple-broker-system/mac-worker && ./start-worker.sh
+
+---
+
+GitHub Repo:
+https://github.com/mluk132/agent-system-docs
+
+Install Script:
+https://raw.githubusercontent.com/mluk132/agent-system-docs/main/simple-broker-system/install.sh
+
+Documentation:
+https://github.com/mluk132/agent-system-docs/tree/main/simple-broker-system
