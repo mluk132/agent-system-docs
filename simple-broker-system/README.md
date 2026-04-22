@@ -34,6 +34,14 @@ Phone (Vercel UI) → Fly.io Broker → Mac (40% CPU/RAM) → Workers
 - Workers: $0 (local)
 - **Total: $2/month**
 
+## ⚡ One-Line Install
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mluk132/agent-system-docs/main/simple-broker-system/install.sh | bash
+```
+
+This installs the worker on your Mac with all dependencies and configuration.
+
 ## 🚀 Quick Start
 
 ### 1. Deploy Broker

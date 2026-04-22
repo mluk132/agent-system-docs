@@ -10,7 +10,20 @@ A complete agent task system that lets you:
 - 📊 See real-time resource usage
 - 💰 Pay only $2/month
 
-## ⚡ Quick Start (5 minutes)
+## ⚡ One-Line Install
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mluk132/agent-system-docs/main/simple-broker-system/install.sh | bash
+```
+
+This will:
+- Clone the repo
+- Install dependencies (psutil, requests)
+- Configure the worker
+- Start agent servers
+- Optionally start the worker
+
+## 📋 Manual Setup (5 minutes)
 
 ### 1. Deploy Broker
 ```bash

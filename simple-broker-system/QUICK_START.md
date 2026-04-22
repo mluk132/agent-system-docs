@@ -2,6 +2,14 @@
 
 Get up and running in 5 minutes!
 
+## 🚀 One-Line Install (Worker)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mluk132/agent-system-docs/main/simple-broker-system/install.sh | bash
+```
+
+This installs everything on your Mac. Then deploy the broker and UI:
+
 ## 1️⃣ Deploy Broker (2 min)
 
 ```bash
