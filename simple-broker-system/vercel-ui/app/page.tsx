@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [project, setProject] = useState('diaperstops');
   const [task, setTask] = useState('');
+  const [priority, setPriority] = useState('normal');
   const [taskId, setTaskId] = useState('');
   const [status, setStatus] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -16,6 +17,13 @@ export default function Home() {
     { id: 'climate', name: 'Climate Wardrobe' },
     { id: 'translator', name: 'Translator' },
     { id: 'android', name: 'Android Template' }
+  ];
+
+  const priorities = [
+    { id: 'low', name: '🟢 Low', color: '#28a745' },
+    { id: 'normal', name: '🔵 Normal', color: '#007bff' },
+    { id: 'high', name: '🟠 High', color: '#fd7e14' },
+    { id: 'urgent', name: '🔴 Urgent', color: '#dc3545' }
   ];
 
   // Poll for status updates
@@ -65,7 +73,7 @@ export default function Home() {
       const res = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ project, task })
+        body: JSON.stringify({ project, task, priority })
       });
 
       const data = await res.json();
@@ -80,6 +88,27 @@ export default function Home() {
       alert('Error: ' + err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCancel = async () => {
+    if (!taskId) return;
+    
+    try {
+      const res = await fetch(`/api/cancel/${taskId}`, {
+        method: 'POST'
+      });
+      
+      const data = await res.json();
+      
+      if (data.success) {
+        alert('Task cancelled');
+        setStatus({ ...status, status: 'cancelled' });
+      } else {
+        alert('Failed to cancel: ' + data.error);
+      }
+    } catch (err) {
+      alert('Error: ' + err);
     }
   };
 
@@ -154,6 +183,27 @@ export default function Home() {
 
         <div style={{ marginBottom: '15px' }}>
           <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px' }}>
+            Priority
+          </label>
+          <select
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '12px',
+              fontSize: '16px',
+              borderRadius: '8px',
+              border: '1px solid #ddd'
+            }}
+          >
+            {priorities.map(p => (
+              <option key={p.id} value={p.id}>{p.name}</option>
+            ))}
+          </select>
+        </div>
+
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px' }}>
             Task
           </label>
           <textarea
@@ -196,12 +246,14 @@ export default function Home() {
       {status && (
         <div style={{
           background: status.status === 'completed' ? '#d4edda' : 
-                     status.status === 'failed' ? '#f8d7da' : '#fff3cd',
+                     status.status === 'failed' ? '#f8d7da' :
+                     status.status === 'cancelled' ? '#e2e3e5' : '#fff3cd',
           padding: '15px',
           borderRadius: '8px',
           border: '1px solid ' + (
             status.status === 'completed' ? '#c3e6cb' : 
-            status.status === 'failed' ? '#f5c6cb' : '#ffeaa7'
+            status.status === 'failed' ? '#f5c6cb' :
+            status.status === 'cancelled' ? '#d6d8db' : '#ffeaa7'
           )
         }}>
           <div style={{ fontSize: '14px', marginBottom: '10px' }}>
@@ -209,7 +261,14 @@ export default function Home() {
           </div>
           <div style={{ fontSize: '14px', marginBottom: '10px' }}>
             <strong>Status:</strong> {status.status}
+            {status.priority && ` (${status.priority})`}
           </div>
+          
+          {status.retries > 0 && (
+            <div style={{ fontSize: '12px', marginBottom: '10px', color: '#856404' }}>
+              <strong>Retries:</strong> {status.retries}/{status.maxRetries}
+            </div>
+          )}
           
           {status.worker && (
             <div style={{ fontSize: '12px', marginBottom: '10px', color: '#666' }}>
@@ -250,6 +309,24 @@ export default function Home() {
             <div style={{ marginTop: '10px', color: '#721c24' }}>
               <strong>Error:</strong> {status.error}
             </div>
+          )}
+          
+          {status.status === 'running' && (
+            <button
+              onClick={handleCancel}
+              style={{
+                marginTop: '10px',
+                padding: '10px 20px',
+                fontSize: '14px',
+                color: 'white',
+                background: '#dc3545',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              Cancel Task
+            </button>
           )}
         </div>
       )}

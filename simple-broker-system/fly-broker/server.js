@@ -26,13 +26,17 @@ function validateTask(project, task) {
 
 // Submit task (from phone)
 app.post('/api/submit', (req, res) => {
-  const { project, task } = req.body;
+  const { project, task, priority = 'normal', tags = [] } = req.body;
   
   // Validate
   const validation = validateTask(project, task);
   if (!validation.valid) {
     return res.status(400).json({ error: validation.error });
   }
+  
+  // Validate priority
+  const validPriorities = ['low', 'normal', 'high', 'urgent'];
+  const taskPriority = validPriorities.includes(priority) ? priority : 'normal';
   
   // Create task
   const taskId = `task-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -41,17 +45,22 @@ app.post('/api/submit', (req, res) => {
     id: taskId,
     project,
     task,
+    priority: taskPriority,
+    tags,
     status: 'pending',
     createdAt: new Date(),
-    result: null
+    result: null,
+    retries: 0,
+    maxRetries: 3
   });
   
-  console.log(`[BROKER] Task created: ${taskId} for ${project}`);
+  console.log(`[BROKER] Task created: ${taskId} for ${project} (priority: ${taskPriority})`);
   
   res.json({
     success: true,
     taskId,
     project,
+    priority: taskPriority,
     message: 'Task queued'
   });
 });
@@ -90,28 +99,35 @@ app.post('/api/worker/poll', (req, res) => {
     workers.set(workerId, worker);
   }
   
-  // Find pending task for this worker
+  // Find pending task for this worker (priority order)
   const workerProjects = projects ? projects.split(',') : ['*'];
   
-  for (const [taskId, task] of tasks.entries()) {
-    if (task.status === 'pending') {
-      if (workerProjects.includes('*') || workerProjects.includes(task.project)) {
-        // Assign task to worker
-        task.status = 'running';
-        task.workerId = workerId;
-        task.startedAt = new Date();
-        tasks.set(taskId, task);
-        
-        console.log(`[BROKER] Task ${taskId} assigned to ${workerId}`);
-        
-        return res.json({
-          success: true,
-          task: {
-            id: task.id,
-            project: task.project,
-            task: task.task
-          }
-        });
+  // Priority order: urgent > high > normal > low
+  const priorityOrder = ['urgent', 'high', 'normal', 'low'];
+  
+  for (const priority of priorityOrder) {
+    for (const [taskId, task] of tasks.entries()) {
+      if (task.status === 'pending' && task.priority === priority) {
+        if (workerProjects.includes('*') || workerProjects.includes(task.project)) {
+          // Assign task to worker
+          task.status = 'running';
+          task.workerId = workerId;
+          task.startedAt = new Date();
+          tasks.set(taskId, task);
+          
+          console.log(`[BROKER] Task ${taskId} (${priority}) assigned to ${workerId}`);
+          
+          return res.json({
+            success: true,
+            task: {
+              id: task.id,
+              project: task.project,
+              task: task.task,
+              priority: task.priority,
+              tags: task.tags
+            }
+          });
+        }
       }
     }
   }
@@ -132,6 +148,25 @@ app.post('/api/worker/result', (req, res) => {
   }
   
   const task = tasks.get(taskId);
+  
+  // Handle failure with retry
+  if (error && task.retries < task.maxRetries) {
+    task.retries++;
+    task.status = 'pending';  // Retry
+    task.workerId = null;
+    task.lastError = error;
+    tasks.set(taskId, task);
+    
+    console.log(`[BROKER] Task ${taskId} failed, retrying (${task.retries}/${task.maxRetries})`);
+    
+    return res.json({
+      success: true,
+      message: 'Task will be retried',
+      retries: task.retries
+    });
+  }
+  
+  // Final result (success or max retries reached)
   task.status = error ? 'failed' : 'completed';
   task.result = result;
   task.error = error;
@@ -173,13 +208,43 @@ app.get('/api/status/:taskId', (req, res) => {
     taskId: task.id,
     project: task.project,
     status: task.status,
+    priority: task.priority,
+    tags: task.tags,
     result: task.result,
     error: task.error,
     duration: task.duration,
     usage: task.usage,
     worker: workerInfo,
+    retries: task.retries,
+    maxRetries: task.maxRetries,
     createdAt: task.createdAt,
     completedAt: task.completedAt
+  });
+});
+
+// Cancel task
+app.post('/api/cancel/:taskId', (req, res) => {
+  const { taskId } = req.params;
+  
+  if (!tasks.has(taskId)) {
+    return res.status(404).json({ error: 'Task not found' });
+  }
+  
+  const task = tasks.get(taskId);
+  
+  if (task.status === 'completed' || task.status === 'failed') {
+    return res.status(400).json({ error: 'Task already finished' });
+  }
+  
+  task.status = 'cancelled';
+  task.completedAt = new Date();
+  tasks.set(taskId, task);
+  
+  console.log(`[BROKER] Task ${taskId} cancelled`);
+  
+  res.json({
+    success: true,
+    message: 'Task cancelled'
   });
 });
 
