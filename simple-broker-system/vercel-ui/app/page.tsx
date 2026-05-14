@@ -6,10 +6,12 @@ export default function Home() {
   const [project, setProject] = useState('diaperstops');
   const [task, setTask] = useState('');
   const [priority, setPriority] = useState('normal');
+  const [agenticMode, setAgenticMode] = useState(false);
   const [taskId, setTaskId] = useState('');
   const [status, setStatus] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [health, setHealth] = useState<any>(null);
+  const [agenticStats, setAgenticStats] = useState<any>(null);
 
   const projects = [
     { id: 'diaperstops', name: 'Diaper Stops' },
@@ -54,6 +56,7 @@ export default function Home() {
         const res = await fetch('/api/health');
         const data = await res.json();
         setHealth(data);
+        setAgenticStats(data.agenticQueues);
       } catch (err) {
         console.error('Health check failed:', err);
       }
@@ -73,7 +76,7 @@ export default function Home() {
       const res = await fetch('/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ project, task, priority })
+        body: JSON.stringify({ project, task, priority, agenticMode })
       });
 
       const data = await res.json();
@@ -158,6 +161,34 @@ export default function Home() {
         </div>
       )}
 
+      {/* Agentic Queue Stats */}
+      {agenticStats && agenticMode && (
+        <div style={{
+          background: '#e3f2fd',
+          padding: '15px',
+          borderRadius: '8px',
+          marginBottom: '20px',
+          border: '1px solid #90caf9'
+        }}>
+          <div style={{ fontSize: '14px', marginBottom: '10px', fontWeight: 'bold' }}>
+            🤖 Agentic Queues
+          </div>
+          {Object.entries(agenticStats).map(([queueType, stats]: [string, any]) => (
+            stats.pending > 0 && (
+              <div key={queueType} style={{
+                background: 'white',
+                padding: '8px',
+                borderRadius: '4px',
+                marginBottom: '6px',
+                fontSize: '12px'
+              }}>
+                <strong>{queueType}:</strong> {stats.pending} pending
+              </div>
+            )
+          ))}
+        </div>
+      )}
+
       {/* Submit Form */}
       <form onSubmit={handleSubmit} style={{ marginBottom: '30px' }}>
         <div style={{ marginBottom: '15px' }}>
@@ -223,6 +254,32 @@ export default function Home() {
           />
         </div>
 
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            fontSize: '14px',
+            cursor: 'pointer',
+            padding: '12px',
+            background: agenticMode ? '#e3f2fd' : '#f5f5f5',
+            borderRadius: '8px',
+            border: agenticMode ? '2px solid #2196f3' : '1px solid #ddd'
+          }}>
+            <input
+              type="checkbox"
+              checked={agenticMode}
+              onChange={(e) => setAgenticMode(e.target.checked)}
+              style={{ marginRight: '10px', width: '18px', height: '18px' }}
+            />
+            <div>
+              <div style={{ fontWeight: 'bold' }}>🤖 Agentic Mode</div>
+              <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
+                Auto-generate tests & docs, enforce guidelines
+              </div>
+            </div>
+          </label>
+        </div>
+
         <button
           type="submit"
           disabled={loading || !task}
@@ -232,13 +289,13 @@ export default function Home() {
             fontSize: '16px',
             fontWeight: 'bold',
             color: 'white',
-            background: loading ? '#999' : '#007bff',
+            background: loading ? '#999' : agenticMode ? '#2196f3' : '#007bff',
             border: 'none',
             borderRadius: '8px',
             cursor: loading ? 'not-allowed' : 'pointer'
           }}
         >
-          {loading ? 'Submitting...' : 'Submit Task'}
+          {loading ? 'Submitting...' : agenticMode ? '🤖 Submit Agentic Task' : 'Submit Task'}
         </button>
       </form>
 

@@ -2,6 +2,7 @@
 """
 Simple Mac Worker
 Polls Fly.io broker and executes tasks with resource limits
+Supports agentic mode with test/doc generation
 """
 import os
 import time
@@ -11,6 +12,8 @@ import uuid
 import psutil
 import resource
 import subprocess
+import json
+from agentic_handler import AgenticHandler
 
 # Configure logging
 logging.basicConfig(
@@ -25,6 +28,9 @@ WORKER_ID = os.getenv('WORKER_ID', f'mac-{uuid.uuid4().hex[:8]}')
 POLL_INTERVAL = int(os.getenv('POLL_INTERVAL', '5'))  # seconds
 CPU_LIMIT = float(os.getenv('CPU_LIMIT', '40'))  # 40% CPU
 RAM_LIMIT = float(os.getenv('RAM_LIMIT', '40'))  # 40% RAM
+
+# Agentic handler
+agentic_handler = AgenticHandler()
 
 # Project port mapping
 PROJECT_PORTS = {
@@ -125,8 +131,9 @@ def execute_task(task):
     task_id = task['id']
     project = task['project']
     task_text = task['task']
+    is_agentic = task.get('agenticMode', False)
     
-    logger.info(f"🚀 Executing task {task_id} for {project}")
+    logger.info(f"🚀 Executing task {task_id} for {project}{' (AGENTIC)' if is_agentic else ''}")
     
     # Check current usage before starting
     usage_before = get_system_usage()
@@ -135,10 +142,30 @@ def execute_task(task):
     port = PROJECT_PORTS.get(project, 8001)
     
     try:
-        # Use cpulimit to restrict CPU usage
-        # Call local agent API with resource monitoring
         start_time = time.time()
         
+        # Handle agentic tasks differently
+        if is_agentic:
+            logger.info(f"   🤖 Using agentic handler")
+            agentic_result = agentic_handler.handle_agentic_task(task)
+            
+            duration = time.time() - start_time
+            usage_after = get_system_usage()
+            
+            logger.info(f"✅ Agentic task {task_id} completed in {duration:.1f}s")
+            logger.info(f"   Tests: {'✅' if agentic_result.get('tests_generated') else '❌'}")
+            logger.info(f"   Docs: {'✅' if agentic_result.get('docs_generated') else '❌'}")
+            logger.info(f"   CPU: {usage_after['cpu_percent']}%, RAM: {usage_after['ram_percent']}%")
+            
+            return {
+                'success': agentic_result['success'],
+                'result': agentic_result,
+                'duration': duration,
+                'usage': usage_after,
+                'agentic': True
+            }
+        
+        # Regular task execution
         response = requests.post(
             f'http://localhost:{port}/execute',
             json={'task': task_text, 'background': False},

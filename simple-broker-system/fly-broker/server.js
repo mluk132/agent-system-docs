@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const AgenticQueue = require('./agentic-queues');
 
 const app = express();
 app.use(express.json());
@@ -8,6 +9,9 @@ app.use(cors());
 // In-memory task queue (use PostgreSQL for production)
 const tasks = new Map();
 const workers = new Map();
+
+// Agentic queue system
+const agenticQueue = new AgenticQueue();
 
 // Business logic: validate task
 function validateTask(project, task) {
@@ -26,7 +30,7 @@ function validateTask(project, task) {
 
 // Submit task (from phone)
 app.post('/api/submit', (req, res) => {
-  const { project, task, priority = 'normal', tags = [] } = req.body;
+  const { project, task, priority = 'normal', tags = [], agenticMode = false } = req.body;
   
   // Validate
   const validation = validateTask(project, task);
@@ -41,7 +45,7 @@ app.post('/api/submit', (req, res) => {
   // Create task
   const taskId = `task-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   
-  tasks.set(taskId, {
+  const taskObj = {
     id: taskId,
     project,
     task,
@@ -51,17 +55,35 @@ app.post('/api/submit', (req, res) => {
     createdAt: new Date(),
     result: null,
     retries: 0,
-    maxRetries: 3
-  });
+    maxRetries: 3,
+    agenticMode
+  };
   
-  console.log(`[BROKER] Task created: ${taskId} for ${project} (priority: ${taskPriority})`);
+  // If agentic mode, enrich with guidelines and queue
+  if (agenticMode) {
+    const queueInfo = agenticQueue.enqueue(taskObj);
+    taskObj.agenticQueue = queueInfo.queueType;
+    taskObj.queuePosition = queueInfo.position;
+    taskObj.guidelines = queueInfo.enrichedTask.guidelines;
+    taskObj.testRequirements = queueInfo.enrichedTask.testRequirements;
+    taskObj.documentationTemplate = queueInfo.enrichedTask.documentationTemplate;
+    taskObj.agenticMetadata = queueInfo.enrichedTask.agenticMetadata;
+    
+    console.log(`[AGENTIC] Task ${taskId} queued in ${queueInfo.queueType} (position ${queueInfo.position})`);
+  }
+  
+  tasks.set(taskId, taskObj);
+  
+  console.log(`[BROKER] Task created: ${taskId} for ${project} (priority: ${taskPriority}${agenticMode ? ', agentic' : ''})`);
   
   res.json({
     success: true,
     taskId,
     project,
     priority: taskPriority,
-    message: 'Task queued'
+    agenticMode,
+    agenticQueue: taskObj.agenticQueue,
+    message: agenticMode ? 'Task queued in agentic system' : 'Task queued'
   });
 });
 
@@ -268,7 +290,32 @@ app.get('/api/health', (req, res) => {
       pending: Array.from(tasks.values()).filter(t => t.status === 'pending').length,
       running: Array.from(tasks.values()).filter(t => t.status === 'running').length,
       completed: Array.from(tasks.values()).filter(t => t.status === 'completed').length
-    }
+    },
+    agenticQueues: agenticQueue.getStats()
+  });
+});
+
+// Get agentic queue stats
+app.get('/api/agentic/stats', (req, res) => {
+  res.json({
+    success: true,
+    queues: agenticQueue.getStats()
+  });
+});
+
+// Get project guidelines
+app.get('/api/agentic/guidelines/:project', (req, res) => {
+  const { project } = req.params;
+  const guidelines = agenticQueue.getDefaultGuidelines(project);
+  const testReqs = agenticQueue.getDefaultTestRequirements(project);
+  const docTemplate = agenticQueue.getDefaultDocTemplate(project);
+  
+  res.json({
+    success: true,
+    project,
+    guidelines,
+    testRequirements: testReqs,
+    documentationTemplate: docTemplate
   });
 });
 
