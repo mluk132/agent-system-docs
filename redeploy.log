@@ -1,0 +1,40 @@
+🚀 Redeploying All Backends (No Doppler)
+==========================================
+
+📦 Deploying diaperstops-api...
+
+Visit your newly deployed app at https://diaperstops-api.fly.dev/
+
+✅ diaperstops-api: https://diaperstops-api.fly.dev
+
+📦 Deploying mixflow-api...
+
+Visit your newly deployed app at https://mixflow-api.fly.dev/
+
+✅ mixflow-api: https://mixflow-api.fly.dev
+
+📦 Deploying propai-api...
+
+Visit your newly deployed app at https://propai-api.fly.dev/
+
+✅ propai-api: https://propai-api.fly.dev
+
+📦 Deploying healthflow-api...
+
+Visit your newly deployed app at https://healthflow-api.fly.dev/
+
+✅ healthflow-api: https://healthflow-api.fly.dev
+
+📦 Deploying hypnotic-api...
+
+Visit your newly deployed app at https://hypnotic-api.fly.dev/
+
+✅ hypnotic-api: https://hypnotic-api.fly.dev
+
+📦 Deploying finder-api...
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: unauthorized (Request ID: 01KSAGDZ7Z7KNZTBVJR9WCSZNM-yyz) (Trace ID: e3eb974d239a353a02ddb8e262222add)
+✅ finder-api: https://finder-api.fly.dev
+
+✅ All backends redeployed!

@@ -1,0 +1,718 @@
+[0;36m
+╔═══════════════════════════════════════════════════════════╗
+║                                                           ║
+║     🚀 DEPLOY EVERYTHING - All Services                  ║
+║                                                           ║
+╚═══════════════════════════════════════════════════════════╝
+[0m
+
+[0;34m📋 Checking prerequisites...[0m
+[0;32m✅ Fly CLI[0m
+[0;32m✅ Vercel CLI[0m
+[0;32m✅ Node.js[0m
+
+[0;34m🔐 Checking authentication...[0m
+Opening https://fly.io/app/auth/cli/7366687a3462686261627a6869647963777469377369336d777a6f7664626337 ...
+
+successfully logged in as morrison.luke@protonmail.com
+[0;32m✅ Fly.io authenticated[0m
+[0;32m✅ Vercel authenticated[0m
+
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;34m📦 STEP 1: Deploying 6 Backend Services to Fly.io[0m
+[0;36m═══════════════════════════════════════════════════════════[0m
+
+[0;34mDeploying propai-backend...[0m
+[0;34mSetting secrets for propai-api...[0m
+[0;34mDeploying propai-api to Fly.io...[0m
+==> Verifying app config
+Validating /home/droid/projects/projects/propai-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Warning: Metrics token unavailable: failed to run query($slug: String!) { organization(slug: $slug) { id internalNumericId slug rawSlug name type billable } }: context canceled
+Error: app not found (Request ID: 01KSAAV1KMBVS88J17TMA2DQEV-yyz) (Trace ID: 00af67b75e272c32a43937e6d48c107d)
+[1;33m⚠️  Deployment failed for propai-api, continuing...[0m
+[0;32m✅ propai-api deployed: https://propai-api.fly.dev[0m
+
+[0;34mDeploying diaperstops-backend...[0m
+[0;34mSetting secrets for diaperstops-api...[0m
+Updating existing machines in 'diaperstops-api' with immediate strategy
+> Updating d8d4e25a611268 [app]
+> Updating d8d4e25a611268 [app]
+✔ Machine d8d4e25a611268 [app] update succeeded
+[0;34mDeploying diaperstops-api to Fly.io...[0m
+==> Verifying app config
+Validating /home/droid/projects/projects/diaperstops-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 500B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 98B 0.2s done
+#3 DONE 0.2s
+
+#4 [1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 371.89kB 0.5s done
+#5 DONE 0.5s
+
+#6 [2/6] RUN apk add --no-cache curl gnupg ca-certificates &&     curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh | sh
+#6 CACHED
+
+#7 [3/6] WORKDIR /app
+#7 CACHED
+
+#8 [4/6] COPY package*.json ./
+#8 DONE 0.0s
+
+#9 [5/6] RUN npm install --production --omit=dev
+#9 0.545 npm warn config production Use `--omit=dev` instead.
+#9 2.901 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+#9 2.929 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+#9 2.943 npm warn deprecated lodash.get@4.4.2: This package is deprecated. Use the optional chaining (?.) operator instead.
+#9 2.944 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+#9 2.959 npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+#9 2.961 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#9 3.007 npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+#9 3.063 npm warn deprecated gauge@3.0.2: This package is no longer supported.
+#9 3.073 npm warn deprecated glob@7.1.6: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#9 3.215 npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#9 6.083 
+#9 6.083 added 192 packages, and audited 193 packages in 6s
+#9 6.083 
+#9 6.083 22 packages are looking for funding
+#9 6.083   run `npm fund` for details
+#9 6.094 
+#9 6.094 5 vulnerabilities (2 moderate, 3 high)
+#9 6.094 
+#9 6.094 To address issues that do not require attention, run:
+#9 6.094   npm audit fix
+#9 6.094 
+#9 6.094 To address all issues (including breaking changes), run:
+#9 6.094   npm audit fix --force
+#9 6.094 
+#9 6.094 Run `npm audit` for details.
+#9 6.096 npm notice
+#9 6.096 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#9 6.096 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#9 6.096 npm notice To update run: npm install -g npm@11.15.0
+#9 6.096 npm notice
+#9 DONE 6.3s
+
+#10 [6/6] COPY . .
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 1.0s done
+#11 exporting manifest sha256:116dda45c2186ddf65e6ef01198076d4fcd5422d56769af3c90890bcdf8d3c14 done
+#11 exporting config sha256:5fc27fde29b4081602198d4508ab2e57e104860b6f60484630d0de74d45d9034 done
+#11 pushing layers for registry.fly.io/diaperstops-api:deployment-01KSAAVCPSEYWB47VG6FD4418W@sha256:116dda45c2186ddf65e6ef01198076d4fcd5422d56769af3c90890bcdf8d3c14
+#11 pushing layer sha256:5fc27fde29b4081602198d4508ab2e57e104860b6f60484630d0de74d45d9034
+#11 pushing layer sha256:7464f5b9302069295028deaeeba99315f3cfe1721b9854ceb0256d9190f6f2b1
+#11 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb
+#11 pushing layer sha256:e616798d6524faadca59d2910e99cd98455f83411c0b5800b5f27f8cae181602
+#11 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48
+#11 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4
+#11 pushing layer sha256:ead2b5bd93dacf9db405d57d106913e5ca66df75dbee66ebf774f9a5d459025a
+#11 pushing layer sha256:59752cf8816cff2336427de3961df75d98cc8db377fb5d21a42e9e3a50910b95
+#11 pushing layer sha256:0a8744069d43dceb4d43846a2ce3e5a2581696a219052bc95b6e5bbb15955e14
+#11 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f
+#11 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb 0.3s done
+#11 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f 0.5s done
+#11 pushing layer sha256:e616798d6524faadca59d2910e99cd98455f83411c0b5800b5f27f8cae181602 0.7s done
+#11 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48 0.6s done
+#11 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4 0.9s done
+#11 pushing layer sha256:ead2b5bd93dacf9db405d57d106913e5ca66df75dbee66ebf774f9a5d459025a 0.8s done
+#11 pushing layer sha256:5fc27fde29b4081602198d4508ab2e57e104860b6f60484630d0de74d45d9034 1.3s done
+#11 pushing layer sha256:7464f5b9302069295028deaeeba99315f3cfe1721b9854ceb0256d9190f6f2b1 1.4s done
+#11 pushing layer sha256:59752cf8816cff2336427de3961df75d98cc8db377fb5d21a42e9e3a50910b95 1.3s done
+#11 pushing layers for registry.fly.io/diaperstops-api:deployment-01KSAAVCPSEYWB47VG6FD4418W@sha256:116dda45c2186ddf65e6ef01198076d4fcd5422d56769af3c90890bcdf8d3c14 1.6s done
+#11 pushing layer sha256:0a8744069d43dceb4d43846a2ce3e5a2581696a219052bc95b6e5bbb15955e14 1.6s done
+#11 pushing manifest for registry.fly.io/diaperstops-api:deployment-01KSAAVCPSEYWB47VG6FD4418W@sha256:116dda45c2186ddf65e6ef01198076d4fcd5422d56769af3c90890bcdf8d3c14
+#11 pushing manifest for registry.fly.io/diaperstops-api:deployment-01KSAAVCPSEYWB47VG6FD4418W@sha256:116dda45c2186ddf65e6ef01198076d4fcd5422d56769af3c90890bcdf8d3c14 0.1s done
+#11 DONE 2.8s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/diaperstops-api:deployment-01KSAAVCPSEYWB47VG6FD4418W
+image size: 71 MB
+
+Watch your deployment at https://fly.io/apps/diaperstops-api/monitoring
+
+Updating existing machines in 'diaperstops-api' with rolling strategy
+> Acquiring lease for d8d4e25a611268
+> Acquired lease for d8d4e25a611268
+> Updating machine config for d8d4e25a611268
+> Updating d8d4e25a611268 [app]
+> Updated machine config for d8d4e25a611268
+> Waiting for machine d8d4e25a611268 to reach a good state
+> Machine d8d4e25a611268 reached stopped state
+✔ Machine d8d4e25a611268 is now in a good state
+> Clearing lease for d8d4e25a611268
+✔ Cleared lease for d8d4e25a611268
+Checking DNS configuration for diaperstops-api.fly.dev
+✓ DNS configuration verified
+
+Visit your newly deployed app at https://diaperstops-api.fly.dev/
+
+Warning: Metrics token unavailable: failed to run query($slug: String!) { organization(slug: $slug) { id internalNumericId slug rawSlug name type billable } }: context canceled
+[0;32m✅ diaperstops-api deployed: https://diaperstops-api.fly.dev[0m
+
+[0;34mDeploying mixflow-backend...[0m
+[0;34mSetting secrets for mixflow-api...[0m
+Updating existing machines in 'mixflow-api' with immediate strategy
+> Updating 811ee7a9994008 [app]
+> Updating 811ee7a9994008 [app]
+✔ Machine 811ee7a9994008 [app] update succeeded
+[0;34mDeploying mixflow-api to Fly.io...[0m
+==> Verifying app config
+Validating /home/droid/projects/projects/mixflow-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 500B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 98B 0.2s
+#3 transferring context: 98B 0.2s done
+#3 DONE 0.2s
+
+#4 [1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 387.82kB 0.6s done
+#5 DONE 0.6s
+
+#6 [2/6] RUN apk add --no-cache curl gnupg ca-certificates &&     curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh | sh
+#6 CACHED
+
+#7 [3/6] WORKDIR /app
+#7 CACHED
+
+#8 [4/6] COPY package*.json ./
+#8 DONE 0.0s
+
+#9 [5/6] RUN npm install --production --omit=dev
+#9 0.223 npm warn config production Use `--omit=dev` instead.
+#9 2.394 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+#9 2.426 npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+#9 2.427 npm warn deprecated lodash.get@4.4.2: This package is deprecated. Use the optional chaining (?.) operator instead.
+#9 2.441 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+#9 2.443 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+#9 2.456 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#9 2.507 npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+#9 2.532 npm warn deprecated gauge@3.0.2: This package is no longer supported.
+#9 2.555 npm warn deprecated glob@7.1.6: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#9 2.678 npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#9 5.671 
+#9 5.671 added 192 packages, and audited 193 packages in 5s
+#9 5.671 
+#9 5.671 22 packages are looking for funding
+#9 5.671   run `npm fund` for details
+#9 5.681 
+#9 5.681 5 vulnerabilities (2 moderate, 3 high)
+#9 5.681 
+#9 5.681 To address issues that do not require attention, run:
+#9 5.681   npm audit fix
+#9 5.681 
+#9 5.681 To address all issues (including breaking changes), run:
+#9 5.681   npm audit fix --force
+#9 5.681 
+#9 5.681 Run `npm audit` for details.
+#9 5.683 npm notice
+#9 5.683 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#9 5.683 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#9 5.683 npm notice To update run: npm install -g npm@11.15.0
+#9 5.683 npm notice
+#9 DONE 6.0s
+
+#10 [6/6] COPY . .
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 1.1s done
+#11 exporting manifest sha256:4ecb9263972bac642ac6e60e68680db9ed61c05c75d7dec82d28cf24cbc265f0 done
+#11 exporting config sha256:071f2d189aa56593c0d01b55cf2e1a724dcb7225a12ce97cae438651f267f1b8 done
+#11 pushing layers for registry.fly.io/mixflow-api:deployment-01KSAAWMBHNQXC1FRHV3HYDAM4@sha256:4ecb9263972bac642ac6e60e68680db9ed61c05c75d7dec82d28cf24cbc265f0
+#11 pushing layer sha256:071f2d189aa56593c0d01b55cf2e1a724dcb7225a12ce97cae438651f267f1b8
+#11 pushing layer sha256:10c408a4a6366ed886d9854fe6192eae93be854f9d4c000f279f3f187c67b9ba
+#11 pushing layer sha256:ead2b5bd93dacf9db405d57d106913e5ca66df75dbee66ebf774f9a5d459025a 0.2s done
+#11 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4
+#11 pushing layer sha256:e616798d6524faadca59d2910e99cd98455f83411c0b5800b5f27f8cae181602 0.1s done
+#11 pushing layer sha256:89760ec98d2dae1ebe8f721af460b2cd1c034a43d921579ad8ed6475677b9953
+#11 pushing layer sha256:170ad166b12681e876f29d852850b820b2fe0e24cb47221761278ef1a2660679
+#11 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48
+#11 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb
+#11 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f
+#11 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb 0.2s done
+#11 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48 0.6s done
+#11 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4 0.6s done
+#11 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f 0.6s done
+#11 pushing layer sha256:071f2d189aa56593c0d01b55cf2e1a724dcb7225a12ce97cae438651f267f1b8 0.9s done
+#11 pushing layer sha256:10c408a4a6366ed886d9854fe6192eae93be854f9d4c000f279f3f187c67b9ba 0.9s done
+#11 pushing layer sha256:170ad166b12681e876f29d852850b820b2fe0e24cb47221761278ef1a2660679 0.9s done
+#11 pushing layers for registry.fly.io/mixflow-api:deployment-01KSAAWMBHNQXC1FRHV3HYDAM4@sha256:4ecb9263972bac642ac6e60e68680db9ed61c05c75d7dec82d28cf24cbc265f0 1.2s done
+#11 pushing layer sha256:89760ec98d2dae1ebe8f721af460b2cd1c034a43d921579ad8ed6475677b9953 1.2s done
+#11 pushing manifest for registry.fly.io/mixflow-api:deployment-01KSAAWMBHNQXC1FRHV3HYDAM4@sha256:4ecb9263972bac642ac6e60e68680db9ed61c05c75d7dec82d28cf24cbc265f0
+#11 pushing manifest for registry.fly.io/mixflow-api:deployment-01KSAAWMBHNQXC1FRHV3HYDAM4@sha256:4ecb9263972bac642ac6e60e68680db9ed61c05c75d7dec82d28cf24cbc265f0 0.1s done
+#11 DONE 2.5s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/mixflow-api:deployment-01KSAAWMBHNQXC1FRHV3HYDAM4
+image size: 71 MB
+
+Watch your deployment at https://fly.io/apps/mixflow-api/monitoring
+
+Updating existing machines in 'mixflow-api' with rolling strategy
+> Acquiring lease for 811ee7a9994008
+> Acquired lease for 811ee7a9994008
+> Updating machine config for 811ee7a9994008
+> Updating 811ee7a9994008 [app]
+> Updated machine config for 811ee7a9994008
+> Waiting for machine 811ee7a9994008 to reach a good state
+> Machine 811ee7a9994008 reached stopped state
+✔ Machine 811ee7a9994008 is now in a good state
+> Clearing lease for 811ee7a9994008
+✔ Cleared lease for 811ee7a9994008
+Checking DNS configuration for mixflow-api.fly.dev
+✓ DNS configuration verified
+
+Visit your newly deployed app at https://mixflow-api.fly.dev/
+
+[0;32m✅ mixflow-api deployed: https://mixflow-api.fly.dev[0m
+
+[0;34mDeploying healthflow-backend...[0m
+[0;34mSetting secrets for healthflow-api...[0m
+[0;34mDeploying healthflow-api to Fly.io...[0m
+==> Verifying app config
+Validating /home/droid/projects/projects/healthflow-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: app not found (Request ID: 01KSAAX9NF1E2807RNTMFSSZ64-yyz) (Trace ID: 2e6026d8901b26c81b1ed079155955de)
+[1;33m⚠️  Deployment failed for healthflow-api, continuing...[0m
+[0;32m✅ healthflow-api deployed: https://healthflow-api.fly.dev[0m
+
+[0;34mDeploying hypnotic-backend...[0m
+[0;34mSetting secrets for hypnotic-api...[0m
+[0;34mDeploying hypnotic-api to Fly.io...[0m
+==> Verifying app config
+Validating /home/droid/projects/projects/hypnotic-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: app not found (Request ID: 01KSAAXFT7CT626JWCTN3CYEGW-yyz) (Trace ID: 679a418673145d11a665dbd172f89b10)
+[1;33m⚠️  Deployment failed for hypnotic-api, continuing...[0m
+[0;32m✅ hypnotic-api deployed: https://hypnotic-api.fly.dev[0m
+
+[0;34mDeploying finder-backend...[0m
+[0;34mSetting secrets for finder-api...[0m
+[0;34mDeploying finder-api to Fly.io...[0m
+==> Verifying app config
+Validating /home/droid/projects/projects/finder-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: unauthorized (Request ID: 01KSAAXP4X195ZJ7BPNSMZ80CS-yyz) (Trace ID: c6d921e5c371263a1cf990d2f728f1e9)
+[1;33m⚠️  Deployment failed for finder-api, continuing...[0m
+[0;32m✅ finder-api deployed: https://finder-api.fly.dev[0m
+
+
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;34m📱 STEP 2: Deploying 2 Frontend Services to Vercel[0m
+[0;36m═══════════════════════════════════════════════════════════[0m
+
+[0;34mDeploying diaperstops-frontend...[0m
+[0;34mInstalling dependencies...[0m
+
+added 400 packages, and audited 401 packages in 34s
+
+147 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (2 moderate, 1 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[0;34mDeploying diaperstops-frontend to Vercel...[0m
+Retrieving project…
+Deploying mluk132s-projects/diaperstops-frontend
+Uploading [--------------------] (0.0B/250.3KB)
+Uploading [======--------------] (78.1KB/250.3KB)
+Uploading [==========----------] (126.1KB/250.3KB)
+Uploading [===============-----] (190.1KB/250.3KB)
+Uploading [====================] (250.3KB/250.3KB)
+Inspect: https://vercel.com/mluk132s-projects/diaperstops-frontend/BfnonZ974FX9LmRMrTkDiauanqYo [3s]
+Production: https://diaperstops-frontend-grmnjfvgy-mluk132s-projects.vercel.app [3s]
+https://diaperstops-frontend-grmnjfvgy-mluk132s-projects.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Downloading 49 deployment files...
+Building: Restored build cache from previous deployment (Ez875sSBy2p3BpUTBoxfKK38XqYF)
+Building: Running "vercel build"
+Building: Vercel CLI 54.4.1
+Building: Installing dependencies...
+[2K[1A[2K[GProduction: https://diaperstops-frontend-grmnjfvgy-mluk132s-projects.vercel.app [30s]
+Completing...
+Aliased: https://diaperstops-frontend.vercel.app [30s]
+[0;32m✅ diaperstops-frontend deployed: https://diaperstops-frontend-grmnjfvgy-mluk132s-projects.vercel.app[0m
+
+[0;34mDeploying mixflow-frontend...[0m
+[0;34mInstalling dependencies...[0m
+
+added 400 packages, and audited 401 packages in 27s
+
+147 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (2 moderate, 1 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues, run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[0;34mDeploying mixflow-frontend to Vercel...[0m
+Retrieving project…
+Deploying mluk132s-projects/mixflow-frontend
+Uploading [--------------------] (0.0B/259.2KB)
+Uploading [=====---------------] (71.1KB/259.2KB)
+Uploading [==========----------] (135.1KB/259.2KB)
+Uploading [===============-----] (199.1KB/259.2KB)
+Uploading [====================] (259.2KB/259.2KB)
+Inspect: https://vercel.com/mluk132s-projects/mixflow-frontend/379Lpfy648xkVkoAUrYSUdEQPoYT [4s]
+Production: https://mixflow-frontend-jsp5m12h2-mluk132s-projects.vercel.app [4s]
+https://mixflow-frontend-jsp5m12h2-mluk132s-projects.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Downloading 50 deployment files...
+Building: Restored build cache from previous deployment (cLonJcVuLj7kWTMHS1mKUPZSDGGc)
+Building: Running "vercel build"
+Building: Vercel CLI 54.4.1
+Building: Installing dependencies...
+Building: added 6 packages in 3s
+Building: 147 packages are looking for funding
+Building: run `npm fund` for details
+Building: Detected Next.js version: 16.2.4
+Building: Running "npm run build"
+Building: > mixflow-frontend@0.1.0 build
+Building: > next build
+Building: Applying modifyConfig from Vercel
+Building: ▲ Next.js 16.2.4 (Turbopack)
+Building: Creating an optimized production build ...
+Building: ✓ Compiled successfully in 8.0s
+Building: Running TypeScript ...
+Building: Finished TypeScript in 4.9s ...
+Building: Collecting page data using 1 worker ...
+Building: Generating static pages using 1 worker (0/31) ...
+Building: Generating static pages using 1 worker (7/31)
+Building: Generating static pages using 1 worker (15/31)
+Building: Generating static pages using 1 worker (23/31)
+Building: ✓ Generating static pages using 1 worker (31/31) in 585ms
+Building: Finalizing page optimization ...
+Building: Running onBuildComplete from Vercel
+Building: Route (app)
+Building: ┌ ○ /
+Building: ├ ○ /_not-found
+Building: ├ ƒ /api/auth/forgot-password
+Building: ├ ƒ /api/auth/login
+Building: ├ ƒ /api/auth/register
+Building: ├ ƒ /api/auth/reset-password
+Building: ├ ○ /collaborate
+Building: ├ ○ /community
+Building: ├ ○ /courses
+Building: ├ ○ /effects
+Building: ├ ○ /export
+Building: ├ ○ /forgot-password
+Building: ├ ○ /login
+Building: ├ ○ /marketplace
+Building: ├ ○ /meal-plans
+Building: ├ ○ /mixer
+Building: ├ ○ /plugins
+Building: ├ ○ /presets
+Building: ├ ○ /profile
+Building: ├ ○ /projects
+Building: ├ ○ /recipes
+Building: ├ ○ /register
+Building: ├ ○ /reset-password
+Building: ├ ○ /samples
+Building: ├ ○ /settings
+Building: ├ ○ /showcase
+Building: ├ ○ /templates
+Building: ├ ○ /tracks
+Building: └ ○ /tutorials
+Building: ○  (Static)   prerendered as static content
+Building: ƒ  (Dynamic)  server-rendered on demand
+Building: Build Completed in /vercel/output [19s]
+Building: Deploying outputs...
+Building: Deployment completed
+Building: Creating build cache...
+[2K[1A[2K[GProduction: https://mixflow-frontend-jsp5m12h2-mluk132s-projects.vercel.app [35s]
+Completing...
+Aliased: https://mixflow-frontend.vercel.app [35s]
+[0;32m✅ mixflow-frontend deployed: https://mixflow-frontend-jsp5m12h2-mluk132s-projects.vercel.app[0m
+
+
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;34m🤖 STEP 3: Deploying Broker System[0m
+[0;36m═══════════════════════════════════════════════════════════[0m
+
+[0;34mDeploying broker to Fly.io...[0m
+An existing fly.toml file was found for app agent-broker
+Scanning source code
+Detected a [32mNodeJS[0m app
+Creating app in /home/droid/projects/projects/simple-broker-system/fly-broker
+
+════════════════════════════════════════════════════════════════════════════════
+
+
+
+
+                       %%%%%%%
+                  %#+++=.  .:+*+*#%%
+               %#+=====:       :++=+#%
+             %#+======-          .++==#%
+            %*=======+.            .+==+%
+           %#========+               *==+%
+           #+========+              = *==*%
+           #=========+           .. : .*=+#
+           #=========*    ==      .:   *==*%
+           #+========+-             :. +==*%
+           #*=========+              :-*==*%         %@
+           %#**+======+-           .-. #==*%      @%%%%@
+           %%#++=======+:      .::.   :*=+%       @%
+           %%%#*++=====++.            #=+#%      @%@
+          %%  %%#*++++++*+.          **+#@       %@
+         %%     @%#***+++*+         =*+#%%      %%
+        @@        @%%##*****       :*+%@%%%    %%
+        @@        @@@@%#***##     .**%%   %% %%%
+        @      @@@@  @@@%%#**%   .+#%@     @%%
+        @@@@@@@           @%#*#.:*%%
+                            @%#**%@
+                             @@%@@
+                            %%#%%%
+                          @#***+**%
+                          %**+***#%
+                          @@%#+*#%
+
+
+We're about to launch your NodeJS app on Fly.io. Here's what you're getting:
+
+Organization: morrison.luke@protonmail.com (fly launch defaults to the personal org)
+Name:         agent-broker-droid           (specified on the command line)
+Region:       Ashburn, Virginia (US)       (specified on the command line)
+App Machines: shared-cpu-1x, 1GB RAM       (most apps need about 1GB of RAM)
+Postgres:     <none>                       (not requested)
+Redis:        <none>                       (not requested)
+Tigris:       <none>                       (not requested)
+
+════════════════════════════════════════════════════════════════════════════════
+
+Created app 'agent-broker-droid' in organization 'morrison-luke-protonmail-com'
+
+Admin URL: https://fly.io/apps/agent-broker-droid
+Hostname: agent-broker-droid.fly.dev
+Wrote config file fly.toml
+Validating /home/droid/projects/projects/simple-broker-system/fly-broker/fly.toml
+[32m✓[0m Configuration is valid
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 184B 0.2s
+#1 transferring dockerfile: 184B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:18-alpine
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 93B 0.2s
+#3 transferring context: 93B 0.2s done
+#3 DONE 0.2s
+
+#4 [1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#4 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 9.39kB 0.2s done
+#5 DONE 0.2s
+
+#6 [2/5] WORKDIR /app
+#6 CACHED
+
+#7 [3/5] COPY package*.json ./
+#7 DONE 0.0s
+
+#8 [4/5] RUN npm install --production
+#8 0.449 npm warn config production Use `--omit=dev` instead.
+#8 2.961 
+#8 2.961 added 70 packages, and audited 71 packages in 3s
+#8 2.961 
+#8 2.961 16 packages are looking for funding
+#8 2.961   run `npm fund` for details
+#8 2.963 
+#8 2.963 found 0 vulnerabilities
+#8 2.964 npm notice
+#8 2.964 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#8 2.964 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#8 2.964 npm notice To update run: npm install -g npm@11.15.0
+#8 2.964 npm notice
+#8 DONE 3.1s
+
+#9 [5/5] COPY server.js ./
+#9 DONE 0.0s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.2s done
+#10 exporting manifest sha256:1b19f6fd2f7b07b121026713499a36cf24cbd60afe3e1d1c46cdca8264ad6ef0 done
+#10 exporting config sha256:70f6098b06272ebb0005932c302936ffc59e5f2eb2f818a8fc833120047eb05f done
+#10 pushing layers for registry.fly.io/agent-broker-droid:deployment-01KSAB263F8XJ5KAC4Z5NGBS91@sha256:1b19f6fd2f7b07b121026713499a36cf24cbd60afe3e1d1c46cdca8264ad6ef0
+#10 pushing layer sha256:70f6098b06272ebb0005932c302936ffc59e5f2eb2f818a8fc833120047eb05f
+#10 pushing layer sha256:3b414dd6972c89f0f489c6b9f42f20ea621f1fe1ec2ab1fd1e67e7df52efe5d1
+#10 pushing layer sha256:c78992ff06cf0b162c9ad93d6e377aa6f5c04a1fa49037c21a5b6d19425a4f99
+#10 pushing layer sha256:cc35d4471a275b376c599e4f1db3b42a60ec9064972269ebad38c517efe86f51
+#10 pushing layer sha256:cde1c2cd7b569b6c57a97fa798fa04c1f5a540479f6d158f33e5218ed96a7e3b
+#10 pushing layer sha256:439c27cc67d3e7d3f9f3808c4c90e4f6b9e074444d47885ba8bef78524adb44b
+#10 pushing layer sha256:bf5b502d9bae7cd98b04ae719c3df525c4b942726dfb6677c9009dba8f8fae62
+#10 pushing layer sha256:afaa00274f92cce26ec2acaac807abe5b1b085d100b3f23773a7dcf4a2721359 0.1s done
+#10 pushing layer sha256:34cdcaf1d55f32e5d3aae6cfa7ca10b0bd101d37b8b2fa10c321faa4076a8c54
+#10 pushing layer sha256:cc35d4471a275b376c599e4f1db3b42a60ec9064972269ebad38c517efe86f51 0.3s done
+#10 pushing layer sha256:c78992ff06cf0b162c9ad93d6e377aa6f5c04a1fa49037c21a5b6d19425a4f99 0.4s done
+#10 pushing layer sha256:cde1c2cd7b569b6c57a97fa798fa04c1f5a540479f6d158f33e5218ed96a7e3b 0.6s done
+#10 pushing layers for registry.fly.io/agent-broker-droid:deployment-01KSAB263F8XJ5KAC4Z5NGBS91@sha256:1b19f6fd2f7b07b121026713499a36cf24cbd60afe3e1d1c46cdca8264ad6ef0 0.7s done
+#10 pushing layer sha256:70f6098b06272ebb0005932c302936ffc59e5f2eb2f818a8fc833120047eb05f 0.6s done
+#10 pushing layer sha256:3b414dd6972c89f0f489c6b9f42f20ea621f1fe1ec2ab1fd1e67e7df52efe5d1 0.6s done
+#10 pushing layer sha256:439c27cc67d3e7d3f9f3808c4c90e4f6b9e074444d47885ba8bef78524adb44b 0.6s done
+#10 pushing layer sha256:bf5b502d9bae7cd98b04ae719c3df525c4b942726dfb6677c9009dba8f8fae62 0.6s done
+#10 pushing layer sha256:34cdcaf1d55f32e5d3aae6cfa7ca10b0bd101d37b8b2fa10c321faa4076a8c54 0.7s done
+#10 pushing manifest for registry.fly.io/agent-broker-droid:deployment-01KSAB263F8XJ5KAC4Z5NGBS91@sha256:1b19f6fd2f7b07b121026713499a36cf24cbd60afe3e1d1c46cdca8264ad6ef0
+#10 pushing manifest for registry.fly.io/agent-broker-droid:deployment-01KSAB263F8XJ5KAC4Z5NGBS91@sha256:1b19f6fd2f7b07b121026713499a36cf24cbd60afe3e1d1c46cdca8264ad6ef0 0.2s done
+#10 DONE 1.1s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/agent-broker-droid:deployment-01KSAB263F8XJ5KAC4Z5NGBS91
+image size: 42 MB
+
+Watch your deployment at https://fly.io/apps/agent-broker-droid/monitoring
+
+Provisioning ips for agent-broker-droid
+  Dedicated ipv6: 2a09:8280:1::11a:e5d:0
+  Shared ipv4: 66.241.124.99
+  Add a dedicated ipv4 with: fly ips allocate-v4
+
+This deployment will:
+ * create 2 "app" machines
+
+> Launching new machine
+No machines in group app, launching a new machine
+> Machine 6837336f409e38 [app] was created
+✖ Failed: smoke checks for 6837336f409e38 failed: the app appears to be crashing
+Error: smoke checks for 6837336f409e38 failed: the app appears to be crashing
+Smoke checks for 6837336f409e38 failed: the app appears to be crashing
+Check its logs: here's the last lines below, or run 'fly logs -i 6837336f409e38':
+Successfully prepared image registry.fly.io/agent-broker-droid@sha256:1b19f6fd2f7b07b121026713499a36cf24cbd60afe3e1d1c46cdca8264ad6ef0 (1.647358204s)
+Configuring firecracker
+2026-05-23T11:56:05.361286415 [01KSAB2FTJR7D2WCGHJ8W8WNEK:main] Running Firecracker v1.14.4
+2026-05-23T11:56:05.361430695 [01KSAB2FTJR7D2WCGHJ8W8WNEK:main] Listening on API socket ("/fc.sock").
+[32m INFO[0m Starting init (commit: ea887ee)...
+[32m INFO[0m Preparing to run: `docker-entrypoint.sh node server.js` as root
+[32m INFO[0m [fly api proxy] listening at /.fly/api
+Machine created and started in 3.33s
+2026/05/23 11:56:06 INFO SSH listening listen_address=[fdaa:60:1284:a7b:576:c746:ed2a:2]:22
+node:internal/modules/cjs/loader:1143
+  throw err;
+  ^
+Error: Cannot find module './agentic-queues'
+Require stack:
+- /app/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (/app/server.js:3:22)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/app/server.js' ]
+}
+Node.js v18.20.8
+[32m INFO[0m Main child exited normally with code: 1
+[32m INFO[0m Starting clean up.
+[    1.764474] reboot: Restarting system
+2026-05-23T11:56:07.870677622 [01KSAB2FTJR7D2WCGHJ8W8WNEK:main] Running Firecracker v1.14.4
+2026-05-23T11:56:07.870821542 [01KSAB2FTJR7D2WCGHJ8W8WNEK:main] Listening on API socket ("/fc.sock").
+[32m INFO[0m Starting init (commit: ea887ee)...
+[32m INFO[0m Preparing to run: `docker-entrypoint.sh node server.js` as root
+[32m INFO[0m [fly api proxy] listening at /.fly/api
+Machine started in 1.037s
+2026/05/23 11:56:08 INFO SSH listening listen_address=[fdaa:60:1284:a7b:576:c746:ed2a:2]:22
+node:internal/modules/cjs/loader:1143
+  throw err;
+  ^
+Error: Cannot find module './agentic-queues'
+Require stack:
+- /app/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (/app/server.js:3:22)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/app/server.js' ]
+}
+Node.js v18.20.8
+[32m INFO[0m Main child exited normally with code: 1
+[32m INFO[0m Starting clean up.
+[    1.756757] reboot: Restarting system
+
+

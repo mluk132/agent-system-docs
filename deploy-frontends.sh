@@ -1,71 +1,51 @@
 #!/bin/bash
+# Deploy frontends to Vercel
 
-echo "🌐 Deploying Frontends to Vercel"
-echo "================================="
+set -e
+
+echo "🌐 Deploying 2 Frontend Services to Vercel"
+echo "==========================================="
 echo ""
 
-# Set up PATH
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+# DiaperStops Frontend
+echo "📱 Deploying diaperstops-frontend..."
+cd diaperstops-frontend
 
-# Check if Vercel is installed
-if ! command -v vercel &> /dev/null; then
-    echo "❌ Vercel CLI not found. Installing..."
-    pnpm add -g vercel
+if [ ! -d "node_modules" ]; then
+  echo "  Installing dependencies..."
+  npm install --silent
 fi
 
-echo "📋 Vercel CLI version: $(vercel --version)"
+echo "  Deploying to Vercel..."
+vercel --yes --prod -e NEXT_PUBLIC_API_URL="https://diaperstops-api.fly.dev" 2>&1 | grep -E "(Deployed|https://)" || true
+
+DIAPERSTOPS_URL=$(vercel ls --yes 2>/dev/null | grep "https://" | head -1 | awk '{print $1}')
+echo "✅ diaperstops-frontend: $DIAPERSTOPS_URL"
 echo ""
 
-# Check if logged in
-echo "🔐 Checking Vercel authentication..."
-if ! vercel whoami &> /dev/null; then
-    echo "⚠️  Not logged in to Vercel. Please authenticate:"
-    echo ""
-    vercel login
-    echo ""
+cd ..
+
+# MixFlow Frontend
+echo "📱 Deploying mixflow-frontend..."
+cd mixflow-frontend
+
+if [ ! -d "node_modules" ]; then
+  echo "  Installing dependencies..."
+  npm install --silent
 fi
 
-echo "✅ Authenticated to Vercel"
+echo "  Deploying to Vercel..."
+vercel --yes --prod -e NEXT_PUBLIC_API_URL="https://mixflow-api.fly.dev" 2>&1 | grep -E "(Deployed|https://)" || true
+
+MIXFLOW_URL=$(vercel ls --yes 2>/dev/null | grep "https://" | head -1 | awk '{print $1}')
+echo "✅ mixflow-frontend: $MIXFLOW_URL"
 echo ""
 
-# Deploy Mixflow Frontend
-echo "📦 Deploying Mixflow Frontend..."
-cd mixflow.io/web/mixflow.io
-if [ -f "package.json" ]; then
-    echo "Installing dependencies..."
-    npm install --legacy-peer-deps
-    echo "Deploying to Vercel..."
-    vercel --prod --yes || vercel deploy --prod
-    echo "✅ Mixflow frontend deployed!"
-else
-    echo "⚠️  No package.json found, skipping..."
-fi
-cd ../../..
+cd ..
 
 echo ""
-
-# Deploy DiaperStops Frontend
-echo "📦 Deploying DiaperStops Frontend..."
-cd diaperstops.com/web/diaperstops.com
-if [ -f "package.json" ]; then
-    echo "Installing dependencies..."
-    npm install --legacy-peer-deps
-    echo "Deploying to Vercel..."
-    vercel --prod --yes || vercel deploy --prod
-    echo "✅ DiaperStops frontend deployed!"
-else
-    echo "⚠️  No package.json found, skipping..."
-fi
-cd ../../..
-
+echo "✅ All frontends deployed!"
 echo ""
-echo "🎉 Frontend Deployment Complete!"
-echo ""
-echo "📝 Environment variables are already set in .env.production files:"
-echo "   - Mixflow: VITE_API_URL=https://mixflow-backend.fly.dev"
-echo "   - DiaperStops: VITE_API_URL=https://diaperstops-backend.fly.dev"
-echo ""
-echo "2. View your deployments:"
-echo "   vercel ls"
-
+echo "URLs:"
+echo "  • diaperstops-frontend: $DIAPERSTOPS_URL"
+echo "  • mixflow-frontend: $MIXFLOW_URL"

@@ -1,0 +1,67 @@
+🚀 Deploying 6 Backend Services to Fly.io
+==========================================
+
+📦 Deploying propai-api...
+  Setting secrets...
+Error: failed to run query ($appName: String!) { appcompact:app(name: $appName) { id internalNumericId name hostname cnameTarget deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }: Could not find App "propai-api"
+  Deploying to Fly.io...
+✅ propai-api: https://propai-api.fly.dev
+
+📦 Deploying diaperstops-api...
+  Setting secrets...
+Updating existing machines in 'diaperstops-api' with rolling strategy
+> Updating d8d4e25a611268 [app]
+> Updating d8d4e25a611268 [app]
+✔ Machine d8d4e25a611268 [app] update succeeded
+Checking DNS configuration for diaperstops-api.fly.dev
+✓ DNS configuration verified
+  Deploying to Fly.io...
+Updating existing machines in 'diaperstops-api' with rolling strategy
+> Updating machine config for d8d4e25a611268
+> Updating d8d4e25a611268 [app]
+Visit your newly deployed app at https://diaperstops-api.fly.dev/
+✅ diaperstops-api: https://diaperstops-api.fly.dev
+
+📦 Deploying mixflow-api...
+  Setting secrets...
+Updating existing machines in 'mixflow-api' with rolling strategy
+> Updating 811ee7a9994008 [app]
+> Updating 811ee7a9994008 [app]
+✔ Machine 811ee7a9994008 [app] update succeeded
+Checking DNS configuration for mixflow-api.fly.dev
+✓ DNS configuration verified
+  Deploying to Fly.io...
+Updating existing machines in 'mixflow-api' with rolling strategy
+> Updating machine config for 811ee7a9994008
+> Updating 811ee7a9994008 [app]
+Visit your newly deployed app at https://mixflow-api.fly.dev/
+✅ mixflow-api: https://mixflow-api.fly.dev
+
+📦 Deploying healthflow-api...
+  Setting secrets...
+Error: failed to run query ($appName: String!) { appcompact:app(name: $appName) { id internalNumericId name hostname cnameTarget deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }: Could not find App "healthflow-api"
+  Deploying to Fly.io...
+✅ healthflow-api: https://healthflow-api.fly.dev
+
+📦 Deploying hypnotic-api...
+  Setting secrets...
+Error: failed to run query ($appName: String!) { appcompact:app(name: $appName) { id internalNumericId name hostname cnameTarget deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }: Could not find App "hypnotic-api"
+  Deploying to Fly.io...
+✅ hypnotic-api: https://hypnotic-api.fly.dev
+
+📦 Deploying finder-api...
+  Setting secrets...
+Error: failed to run query ($appName: String!) { appcompact:app(name: $appName) { id internalNumericId name hostname cnameTarget deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }: Could not find App "finder-api"
+  Deploying to Fly.io...
+✅ finder-api: https://finder-api.fly.dev
+
+
+✅ All backends deployed!
+
+URLs:
+  • propai-api: https://propai-api.fly.dev
+  • diaperstops-api: https://diaperstops-api.fly.dev
+  • mixflow-api: https://mixflow-api.fly.dev
+  • healthflow-api: https://healthflow-api.fly.dev
+  • hypnotic-api: https://hypnotic-api.fly.dev
+  • finder-api: https://finder-api.fly.dev

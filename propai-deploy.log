@@ -1,0 +1,10 @@
+🚀 Deploying propai-api...
+Setting secrets...
+Error: failed to run query ($appName: String!) { appcompact:app(name: $appName) { id internalNumericId name hostname cnameTarget deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }: Could not find App "propai-api"
+Deploying...
+==> Verifying app config
+Validating /home/droid/projects/projects/propai-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: app not found (Request ID: 01KSAEVRQ3YSGRYB8EMBTASNZK-yyz) (Trace ID: b8c692d1444115281e448e9184ee0477)
+✅ propai-api deployed: https://propai-api.fly.dev

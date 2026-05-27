@@ -1,0 +1,10 @@
+🚀 Deploying hypnotic-api...
+Setting secrets...
+Error: failed to run query ($appName: String!) { appcompact:app(name: $appName) { id internalNumericId name hostname cnameTarget deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }: Could not find App "hypnotic-api"
+Deploying...
+==> Verifying app config
+Validating /home/droid/projects/projects/hypnotic-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: app not found (Request ID: 01KSAEVT5S2DKTF1RAN64C7ZXA-yyz) (Trace ID: beac3d92d5e87d4b6f73da44ef9356aa)
+✅ hypnotic-api deployed: https://hypnotic-api.fly.dev

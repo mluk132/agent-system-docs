@@ -1,0 +1,10 @@
+🚀 Deploying finder-api...
+Setting secrets...
+Error: failed to run query ($appName: String!) { appcompact:app(name: $appName) { id internalNumericId name hostname cnameTarget deployed network status appUrl platformVersion organization { id internalNumericId slug paidPlan } postgresAppRole: role { name } } }: Could not find App "finder-api"
+Deploying...
+==> Verifying app config
+Validating /home/droid/projects/projects/finder-backend/backend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: unauthorized (Request ID: 01KSAEVTJAZHKPJ80PGP5DMD85-yyz) (Trace ID: c913993a10badba6ff7c89aa92b6bf6e)
+✅ finder-api deployed: https://finder-api.fly.dev

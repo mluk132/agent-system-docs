@@ -1,0 +1,1004 @@
+=========================================
+Deploying Frontends (Minimal Cost)
+=========================================
+
+>>> Processing diaperstops-frontend...
+Updating next.config.ts for standalone build...
+✅ Created deployment files for diaperstops-frontend
+Creating Fly.io app: diaperstops-web...
+New app created: diaperstops-web
+Deploying diaperstops-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/diaperstops-frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 633B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.1s done
+#3 DONE 0.1s
+
+#4 [runner 1/7] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#4 DONE 0.0s
+
+#5 [runner 2/7] WORKDIR /app
+#5 CACHED
+
+#6 [runner 3/7] RUN addgroup --system --gid 1001 nodejs
+#6 DONE 0.1s
+
+#7 [internal] load build context
+#7 ...
+
+#8 [runner 4/7] RUN adduser --system --uid 1001 nextjs
+#8 DONE 0.1s
+
+#7 [internal] load build context
+#7 transferring context: 61.12MB 5.2s
+#7 transferring context: 131.99MB 10.3s
+#7 transferring context: 190.74MB 15.3s
+#7 transferring context: 236.96MB 20.5s
+#7 transferring context: 305.45MB 25.5s
+#7 transferring context: 374.70MB 30.5s
+#7 transferring context: 442.15MB 35.5s
+#7 transferring context: 512.94MB 40.5s
+#7 transferring context: 581.68MB 45.6s
+#7 transferring context: 595.18MB 46.8s done
+#7 DONE 46.9s
+
+#9 [builder 3/6] COPY package*.json ./
+#9 DONE 0.6s
+
+#10 [builder 4/6] RUN npm ci
+#10 20.04 
+#10 20.04 added 400 packages, and audited 401 packages in 14s
+#10 20.04 
+#10 20.04 147 packages are looking for funding
+#10 20.04   run `npm fund` for details
+#10 20.20 
+#10 20.20 3 vulnerabilities (2 moderate, 1 high)
+#10 20.20 
+#10 20.20 To address issues that do not require attention, run:
+#10 20.20   npm audit fix
+#10 20.20 
+#10 20.20 To address all issues, run:
+#10 20.20   npm audit fix --force
+#10 20.20 
+#10 20.20 Run `npm audit` for details.
+#10 20.20 npm notice
+#10 20.20 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#10 20.20 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#10 20.20 npm notice To update run: npm install -g npm@11.15.0
+#10 20.20 npm notice
+#10 DONE 25.9s
+
+#11 [builder 5/6] COPY . .
+#11 DONE 11.1s
+
+#12 [builder 6/6] RUN npm run build
+#12 0.493 
+#12 0.493 > diaperstops-frontend@0.1.0 build
+#12 0.493 > next build
+#12 0.493 
+#12 1.114 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#12 1.115 This information is used to shape Next.js' roadmap and prioritize features.
+#12 1.115 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#12 1.115 https://nextjs.org/telemetry
+#12 1.115 
+#12 1.135 ▲ Next.js 16.2.4 (Turbopack)
+#12 1.135 - Environments: .env.local
+#12 1.135 
+#12 1.250   Creating an optimized production build ...
+#12 6.410 ✓ Compiled successfully in 4.8s
+#12 6.429   Running TypeScript ...
+#12 10.89   Finished TypeScript in 4.5s ...
+#12 10.90   Collecting page data using 3 workers ...
+#12 11.54   Generating static pages using 3 workers (0/29) ...
+#12 11.87   Generating static pages using 3 workers (7/29) 
+#12 11.95   Generating static pages using 3 workers (14/29) 
+#12 12.04   Generating static pages using 3 workers (21/29) 
+#12 12.09 ✓ Generating static pages using 3 workers (29/29) in 546ms
+#12 12.10   Finalizing page optimization ...
+#12 12.42 
+#12 12.43 Route (app)
+#12 12.43 ┌ ○ /
+#12 12.43 ├ ○ /_not-found
+#12 12.43 ├ ○ /accessibility
+#12 12.43 ├ ○ /add-location
+#12 12.43 ├ ƒ /api/auth/forgot-password
+#12 12.43 ├ ƒ /api/auth/login
+#12 12.43 ├ ƒ /api/auth/register
+#12 12.43 ├ ƒ /api/auth/reset-password
+#12 12.43 ├ ○ /categories
+#12 12.43 ├ ○ /community
+#12 12.43 ├ ○ /directions
+#12 12.43 ├ ○ /favorites
+#12 12.43 ├ ○ /forgot-password
+#12 12.43 ├ ○ /hours
+#12 12.43 ├ ○ /login
+#12 12.43 ├ ○ /map
+#12 12.43 ├ ○ /nearby
+#12 12.43 ├ ○ /photos
+#12 12.43 ├ ○ /profile
+#12 12.43 ├ ○ /register
+#12 12.43 ├ ○ /report
+#12 12.43 ├ ○ /reset-password
+#12 12.43 ├ ○ /reviews
+#12 12.43 ├ ○ /routes
+#12 12.43 ├ ○ /search
+#12 12.43 ├ ○ /settings
+#12 12.43 └ ○ /tips
+#12 12.43 
+#12 12.43 
+#12 12.43 ○  (Static)   prerendered as static content
+#12 12.43 ƒ  (Dynamic)  server-rendered on demand
+#12 12.43 
+#12 DONE 12.5s
+
+#13 [runner 5/7] COPY --from=builder /app/public ./public
+#13 DONE 0.0s
+
+#14 [runner 6/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+#14 DONE 0.4s
+
+#15 [runner 7/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 1.9s done
+#16 exporting manifest sha256:37d6601fce0d7caf90aee3df6d206a0bb27a38f2afee9036f5b036fe53bbc957 done
+#16 exporting config sha256:017c024f2c996600074d51335f115e4ce43d4847d7fcee07e626626695712e70 done
+#16 pushing layers for registry.fly.io/diaperstops-web:deployment-01KSFTYD1JFVEC1SG6WQHPKPMM@sha256:37d6601fce0d7caf90aee3df6d206a0bb27a38f2afee9036f5b036fe53bbc957
+#16 pushing layer sha256:5351a979daef4669e5581665dc62e050b76b30490dfca737614aabebd06b1829
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48
+#16 pushing layer sha256:85676b8c0f0f55041cd32441eb3814d39431a2ef52941dcee9be37a8f92dd4fe
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093
+#16 pushing layer sha256:017c024f2c996600074d51335f115e4ce43d4847d7fcee07e626626695712e70
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f 0.1s done
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4 0.1s done
+#16 pushing layer sha256:30592674c13049ce424b8deb9223e718c8ecd50adfe54b6b782a8aa9ecf7b3be
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb 0.4s done
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48 0.6s done
+#16 pushing layer sha256:017c024f2c996600074d51335f115e4ce43d4847d7fcee07e626626695712e70 0.7s done
+#16 pushing layer sha256:5351a979daef4669e5581665dc62e050b76b30490dfca737614aabebd06b1829 0.8s done
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe 0.7s done
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093 0.8s done
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c 0.7s done
+#16 pushing layer sha256:30592674c13049ce424b8deb9223e718c8ecd50adfe54b6b782a8aa9ecf7b3be 0.7s done
+#16 pushing layers for registry.fly.io/diaperstops-web:deployment-01KSFTYD1JFVEC1SG6WQHPKPMM@sha256:37d6601fce0d7caf90aee3df6d206a0bb27a38f2afee9036f5b036fe53bbc957 1.2s done
+#16 pushing layer sha256:85676b8c0f0f55041cd32441eb3814d39431a2ef52941dcee9be37a8f92dd4fe 1.2s done
+#16 pushing manifest for registry.fly.io/diaperstops-web:deployment-01KSFTYD1JFVEC1SG6WQHPKPMM@sha256:37d6601fce0d7caf90aee3df6d206a0bb27a38f2afee9036f5b036fe53bbc957
+#16 pushing manifest for registry.fly.io/diaperstops-web:deployment-01KSFTYD1JFVEC1SG6WQHPKPMM@sha256:37d6601fce0d7caf90aee3df6d206a0bb27a38f2afee9036f5b036fe53bbc957 0.1s done
+#16 DONE 3.2s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/diaperstops-web:deployment-01KSFTYD1JFVEC1SG6WQHPKPMM
+image size: 61 MB
+
+Watch your deployment at https://fly.io/apps/diaperstops-web/monitoring
+
+Provisioning ips for diaperstops-web
+  Dedicated ipv6: 2a09:8280:1::11a:fc56:0
+  Shared ipv4: 66.241.124.159
+  Add a dedicated ipv4 with: fly ips allocate-v4
+
+This deployment will:
+ * create 1 "app" machine
+
+> Launching new machine
+No machines in group app, launching a new machine
+> Machine 0800d7f1696548 [app] was created
+✔ Machine 0800d7f1696548 [app] update finished: success
+Finished launching new machines
+
+
+NOTE: The machines for [app] have services with 'auto_stop_machines = "stop"' that will be stopped when idling
+
+Checking DNS configuration for diaperstops-web.fly.dev
+✓ DNS configuration verified
+
+Visit your newly deployed app at https://diaperstops-web.fly.dev/
+
+✅ Deployed diaperstops-frontend successfully
+
+>>> Processing propai-frontend...
+Updating next.config.ts for standalone build...
+✅ Created deployment files for propai-frontend
+Creating Fly.io app: propai-web...
+New app created: propai-web
+Deploying propai-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/propai-frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 633B 0.2s
+#1 transferring dockerfile: 633B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.1s done
+#3 DONE 0.1s
+
+#4 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 47.70MB 5.0s
+#5 transferring context: 114.95MB 10.0s
+#5 transferring context: 182.29MB 15.2s
+#5 transferring context: 248.91MB 20.2s
+#5 transferring context: 319.26MB 25.3s
+#5 transferring context: 387.59MB 30.3s
+#5 transferring context: 454.51MB 35.3s
+#5 transferring context: 528.05MB 40.4s
+#5 transferring context: 592.30MB 45.4s
+#5 transferring context: 598.76MB 46.0s done
+#5 DONE 46.0s
+
+#6 [builder 2/6] WORKDIR /app
+#6 CACHED
+
+#7 [builder 3/6] COPY package*.json ./
+#7 DONE 2.0s
+
+#8 [builder 4/6] RUN npm ci
+#8 14.89 
+#8 14.89 added 400 packages, and audited 401 packages in 15s
+#8 14.89 
+#8 14.89 147 packages are looking for funding
+#8 14.89   run `npm fund` for details
+#8 15.06 
+#8 15.06 2 vulnerabilities (1 moderate, 1 high)
+#8 15.06 
+#8 15.06 To address all issues, run:
+#8 15.06   npm audit fix --force
+#8 15.06 
+#8 15.06 Run `npm audit` for details.
+#8 15.17 npm notice
+#8 15.17 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#8 15.17 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#8 15.17 npm notice To update run: npm install -g npm@11.15.0
+#8 15.17 npm notice
+#8 DONE 19.8s
+
+#9 [builder 5/6] COPY . .
+#9 DONE 11.1s
+
+#10 [builder 6/6] RUN npm run build
+#10 0.415 
+#10 0.415 > propai-frontend@0.1.0 build
+#10 0.415 > next build
+#10 0.415 
+#10 0.989 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 0.989 This information is used to shape Next.js' roadmap and prioritize features.
+#10 0.989 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 0.990 https://nextjs.org/telemetry
+#10 0.990 
+#10 1.016 ▲ Next.js 16.2.4 (Turbopack)
+#10 1.016 - Environments: .env.local
+#10 1.016 
+#10 1.121   Creating an optimized production build ...
+#10 4.337 ✓ Compiled successfully in 2.9s
+#10 4.342   Running TypeScript ...
+#10 7.048   Finished TypeScript in 2.7s ...
+#10 7.053   Collecting page data using 3 workers ...
+#10 7.532   Generating static pages using 3 workers (0/4) ...
+#10 7.777   Generating static pages using 3 workers (1/4) 
+#10 7.781   Generating static pages using 3 workers (2/4) 
+#10 7.781   Generating static pages using 3 workers (3/4) 
+#10 7.782 ✓ Generating static pages using 3 workers (4/4) in 250ms
+#10 7.789   Finalizing page optimization ...
+#10 8.037 
+#10 8.040 Route (app)
+#10 8.040 ┌ ○ /
+#10 8.040 └ ○ /_not-found
+#10 8.040 
+#10 8.040 
+#10 8.040 ○  (Static)  prerendered as static content
+#10 8.040 
+#10 DONE 8.1s
+
+#11 [runner 3/7] RUN addgroup --system --gid 1001 nodejs
+#11 CACHED
+
+#12 [runner 4/7] RUN adduser --system --uid 1001 nextjs
+#12 CACHED
+
+#13 [runner 5/7] COPY --from=builder /app/public ./public
+#13 DONE 0.0s
+
+#14 [runner 6/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+#14 DONE 0.3s
+
+#15 [runner 7/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 1.9s done
+#16 exporting manifest sha256:d91a6e237e656a69a0e831e0a98ac0aaf63ef5d2739ce25275b7422958051fd4 done
+#16 exporting config sha256:49d0d4267e1e6d2de3216ddec48a18e0cd5076ccaad668be6fd0195ad7204384 done
+#16 pushing layers for registry.fly.io/propai-web:deployment-01KSFV2SXNJ8X6PSHKHN397MH9@sha256:d91a6e237e656a69a0e831e0a98ac0aaf63ef5d2739ce25275b7422958051fd4
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4
+#16 pushing layer sha256:df213aef6a91e648a6a2fc57e298587c51862fe96578ccc2a6e16adda483b412
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb
+#16 pushing layer sha256:49d0d4267e1e6d2de3216ddec48a18e0cd5076ccaad668be6fd0195ad7204384
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c 0.1s done
+#16 pushing layer sha256:e08c8ba82b280ea3b4bb605e78b77d9afefb5e57318fab08f5f78418ad890275
+#16 pushing layer sha256:d2b159612825e5d3ce37ceed717c97544471233d76cab8781d977dda6517ce9a
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe 0.1s done
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb 0.3s done
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f 0.4s done
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48 0.4s done
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4 0.6s done
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093 0.6s done
+#16 pushing layer sha256:e08c8ba82b280ea3b4bb605e78b77d9afefb5e57318fab08f5f78418ad890275 0.7s done
+#16 pushing layer sha256:df213aef6a91e648a6a2fc57e298587c51862fe96578ccc2a6e16adda483b412 0.7s done
+#16 pushing layer sha256:49d0d4267e1e6d2de3216ddec48a18e0cd5076ccaad668be6fd0195ad7204384 0.7s done
+#16 pushing layer sha256:d2b159612825e5d3ce37ceed717c97544471233d76cab8781d977dda6517ce9a 1.0s done
+#16 pushing layers for registry.fly.io/propai-web:deployment-01KSFV2SXNJ8X6PSHKHN397MH9@sha256:d91a6e237e656a69a0e831e0a98ac0aaf63ef5d2739ce25275b7422958051fd4 1.0s done
+#16 pushing manifest for registry.fly.io/propai-web:deployment-01KSFV2SXNJ8X6PSHKHN397MH9@sha256:d91a6e237e656a69a0e831e0a98ac0aaf63ef5d2739ce25275b7422958051fd4 0.1s done
+#16 DONE 3.1s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/propai-web:deployment-01KSFV2SXNJ8X6PSHKHN397MH9
+image size: 61 MB
+
+Watch your deployment at https://fly.io/apps/propai-web/monitoring
+
+Provisioning ips for propai-web
+  Dedicated ipv6: 2a09:8280:1::11a:fc7e:0
+  Shared ipv4: 66.241.125.37
+  Add a dedicated ipv4 with: fly ips allocate-v4
+
+This deployment will:
+ * create 1 "app" machine
+
+> Launching new machine
+No machines in group app, launching a new machine
+> Machine 2867600c170198 [app] was created
+✔ Machine 2867600c170198 [app] update finished: success
+Finished launching new machines
+
+
+NOTE: The machines for [app] have services with 'auto_stop_machines = "stop"' that will be stopped when idling
+
+Checking DNS configuration for propai-web.fly.dev
+✓ DNS configuration verified
+
+Visit your newly deployed app at https://propai-web.fly.dev/
+
+✅ Deployed propai-frontend successfully
+
+>>> Processing finder-frontend...
+Updating next.config.ts for standalone build...
+✅ Created deployment files for finder-frontend
+Creating Fly.io app: finder-web...
+Error: Validation failed: Name has already been taken (Request ID: 01KSFV64Y231KZ9DCVYPVTWHTK-yyz)
+Deploying finder-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/finder-frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+Error: unauthorized (Request ID: 01KSFV65YGW4PJYSWDQ0GF0J3G-yyz) (Trace ID: bc821cd052cf80b6efea2a90675682f9)
+⚠️  Deployment failed for finder-frontend
+
+>>> Processing hypnotic-frontend...
+Updating next.config.ts for standalone build...
+✅ Created deployment files for hypnotic-frontend
+Creating Fly.io app: hypnotic-web...
+New app created: hypnotic-web
+Deploying hypnotic-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/hypnotic-frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 633B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.1s done
+#3 DONE 0.1s
+
+#4 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 54.26MB 5.1s
+#5 transferring context: 122.06MB 10.2s
+#5 transferring context: 173.41MB 15.2s
+#5 transferring context: 240.21MB 20.4s
+#5 transferring context: 301.52MB 25.5s
+#5 transferring context: 363.65MB 30.5s
+#5 transferring context: 432.82MB 35.6s
+#5 transferring context: 498.01MB 40.6s
+#5 transferring context: 567.88MB 45.7s
+#5 transferring context: 593.42MB 47.8s done
+#5 DONE 47.9s
+
+#6 [builder 2/6] WORKDIR /app
+#6 CACHED
+
+#7 [builder 3/6] COPY package*.json ./
+#7 DONE 2.3s
+
+#8 [builder 4/6] RUN npm ci
+#8 15.62 
+#8 15.62 added 400 packages, and audited 401 packages in 15s
+#8 15.62 
+#8 15.62 147 packages are looking for funding
+#8 15.62   run `npm fund` for details
+#8 15.79 
+#8 15.79 2 vulnerabilities (1 moderate, 1 high)
+#8 15.79 
+#8 15.79 To address all issues, run:
+#8 15.79   npm audit fix --force
+#8 15.79 
+#8 15.79 Run `npm audit` for details.
+#8 15.79 npm notice
+#8 15.79 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#8 15.79 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#8 15.79 npm notice To update run: npm install -g npm@11.15.0
+#8 15.79 npm notice
+#8 DONE 20.0s
+
+#9 [builder 5/6] COPY . .
+#9 DONE 10.8s
+
+#10 [builder 6/6] RUN npm run build
+#10 0.429 
+#10 0.429 > hypnotic-frontend@0.1.0 build
+#10 0.429 > next build
+#10 0.429 
+#10 1.057 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 1.058 This information is used to shape Next.js' roadmap and prioritize features.
+#10 1.058 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 1.058 https://nextjs.org/telemetry
+#10 1.058 
+#10 1.074 ▲ Next.js 16.2.4 (Turbopack)
+#10 1.074 
+#10 1.180   Creating an optimized production build ...
+#10 4.419 ✓ Compiled successfully in 3.0s
+#10 4.428   Running TypeScript ...
+#10 6.974   Finished TypeScript in 2.5s ...
+#10 6.982   Collecting page data using 3 workers ...
+#10 7.433   Generating static pages using 3 workers (0/4) ...
+#10 7.664   Generating static pages using 3 workers (1/4) 
+#10 7.669   Generating static pages using 3 workers (2/4) 
+#10 7.669   Generating static pages using 3 workers (3/4) 
+#10 7.669 ✓ Generating static pages using 3 workers (4/4) in 237ms
+#10 7.675   Finalizing page optimization ...
+#10 7.910 
+#10 7.912 Route (app)
+#10 7.912 ┌ ○ /
+#10 7.912 └ ○ /_not-found
+#10 7.912 
+#10 7.912 
+#10 7.912 ○  (Static)  prerendered as static content
+#10 7.912 
+#10 DONE 8.0s
+
+#11 [runner 3/7] RUN addgroup --system --gid 1001 nodejs
+#11 CACHED
+
+#12 [runner 4/7] RUN adduser --system --uid 1001 nextjs
+#12 CACHED
+
+#13 [runner 5/7] COPY --from=builder /app/public ./public
+#13 DONE 0.0s
+
+#14 [runner 6/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+#14 DONE 0.2s
+
+#15 [runner 7/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 1.9s done
+#16 exporting manifest sha256:6adb6195005c0311f543ed4755141140431ad3ad2859d82f22451b3cd7e49e75 done
+#16 exporting config sha256:c15dce7cf1bba421d72ff526e21f50078ee8dcbd015320ee831748ced816f5c4 done
+#16 pushing layers for registry.fly.io/hypnotic-web:deployment-01KSFV69H1153DFT6TSVW3CTC7@sha256:6adb6195005c0311f543ed4755141140431ad3ad2859d82f22451b3cd7e49e75
+#16 pushing layer sha256:c15dce7cf1bba421d72ff526e21f50078ee8dcbd015320ee831748ced816f5c4
+#16 pushing layer sha256:ab83238f7f9339e6cc8c8f37a36df2556252d29067e2aec4af39a08d88f45c6a
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48 0.1s done
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093
+#16 pushing layer sha256:180b82e49ce72a9ca1af343b38356e28b80759e6aa800b88077b0d2fe4d321d5
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c
+#16 pushing layer sha256:bd1767f878d99907551c6dc69ff87d048f96f0f80dace816ce6cfde5328234ac
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe 0.2s done
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093 0.4s done
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c 0.4s done
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4 0.5s done
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f 0.6s done
+#16 pushing layer sha256:c15dce7cf1bba421d72ff526e21f50078ee8dcbd015320ee831748ced816f5c4 0.7s done
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb 0.6s done
+#16 pushing layer sha256:ab83238f7f9339e6cc8c8f37a36df2556252d29067e2aec4af39a08d88f45c6a 0.7s done
+#16 pushing layer sha256:180b82e49ce72a9ca1af343b38356e28b80759e6aa800b88077b0d2fe4d321d5 0.7s done
+#16 pushing layers for registry.fly.io/hypnotic-web:deployment-01KSFV69H1153DFT6TSVW3CTC7@sha256:6adb6195005c0311f543ed4755141140431ad3ad2859d82f22451b3cd7e49e75 1.1s done
+#16 pushing layer sha256:bd1767f878d99907551c6dc69ff87d048f96f0f80dace816ce6cfde5328234ac 1.1s done
+#16 pushing manifest for registry.fly.io/hypnotic-web:deployment-01KSFV69H1153DFT6TSVW3CTC7@sha256:6adb6195005c0311f543ed4755141140431ad3ad2859d82f22451b3cd7e49e75
+#16 pushing manifest for registry.fly.io/hypnotic-web:deployment-01KSFV69H1153DFT6TSVW3CTC7@sha256:6adb6195005c0311f543ed4755141140431ad3ad2859d82f22451b3cd7e49e75 0.1s done
+#16 DONE 3.0s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/hypnotic-web:deployment-01KSFV69H1153DFT6TSVW3CTC7
+image size: 61 MB
+
+Watch your deployment at https://fly.io/apps/hypnotic-web/monitoring
+
+Provisioning ips for hypnotic-web
+  Dedicated ipv6: 2a09:8280:1::11a:fcad:0
+  Shared ipv4: 66.241.124.88
+  Add a dedicated ipv4 with: fly ips allocate-v4
+
+This deployment will:
+ * create 1 "app" machine
+
+> Launching new machine
+No machines in group app, launching a new machine
+> Machine 185e20ea966e68 [app] was created
+✔ Machine 185e20ea966e68 [app] update finished: success
+Finished launching new machines
+
+
+NOTE: The machines for [app] have services with 'auto_stop_machines = "stop"' that will be stopped when idling
+
+Checking DNS configuration for hypnotic-web.fly.dev
+✓ DNS configuration verified
+
+Visit your newly deployed app at https://hypnotic-web.fly.dev/
+
+✅ Deployed hypnotic-frontend successfully
+
+>>> Processing healthflow-frontend...
+Updating next.config.ts for standalone build...
+✅ Created deployment files for healthflow-frontend
+Creating Fly.io app: healthflow-web...
+New app created: healthflow-web
+Deploying healthflow-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/healthflow-frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 633B 0.2s
+#1 transferring dockerfile: 633B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.1s done
+#3 DONE 0.1s
+
+#4 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 48.25MB 5.1s
+#5 transferring context: 118.73MB 10.2s
+#5 transferring context: 184.96MB 15.3s
+#5 transferring context: 250.27MB 20.3s
+#5 transferring context: 321.27MB 25.5s
+#5 transferring context: 386.20MB 30.6s
+#5 transferring context: 449.03MB 35.8s
+#5 transferring context: 516.91MB 41.0s
+#5 transferring context: 577.37MB 46.0s
+#5 transferring context: 589.69MB 47.0s done
+#5 DONE 47.1s
+
+#6 [builder 2/6] WORKDIR /app
+#6 CACHED
+
+#7 [builder 3/6] COPY package*.json ./
+#7 DONE 2.9s
+
+#8 [builder 4/6] RUN npm ci
+#8 15.43 
+#8 15.43 added 400 packages, and audited 401 packages in 15s
+#8 15.43 
+#8 15.43 147 packages are looking for funding
+#8 15.43   run `npm fund` for details
+#8 15.62 
+#8 15.62 2 vulnerabilities (1 moderate, 1 high)
+#8 15.62 
+#8 15.62 To address all issues, run:
+#8 15.62   npm audit fix --force
+#8 15.62 
+#8 15.62 Run `npm audit` for details.
+#8 15.62 npm notice
+#8 15.62 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#8 15.62 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#8 15.62 npm notice To update run: npm install -g npm@11.15.0
+#8 15.62 npm notice
+#8 DONE 20.0s
+
+#9 [builder 5/6] COPY . .
+#9 DONE 11.0s
+
+#10 [builder 6/6] RUN npm run build
+#10 0.451 
+#10 0.451 > healthflow-frontend@0.1.0 build
+#10 0.451 > next build
+#10 0.451 
+#10 1.061 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 1.061 This information is used to shape Next.js' roadmap and prioritize features.
+#10 1.061 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 1.061 https://nextjs.org/telemetry
+#10 1.061 
+#10 1.082 ▲ Next.js 16.2.4 (Turbopack)
+#10 1.082 
+#10 1.215   Creating an optimized production build ...
+#10 4.545 ✓ Compiled successfully in 3.0s
+#10 4.550   Running TypeScript ...
+#10 7.162   Finished TypeScript in 2.6s ...
+#10 7.166   Collecting page data using 3 workers ...
+#10 7.622   Generating static pages using 3 workers (0/4) ...
+#10 7.869   Generating static pages using 3 workers (1/4) 
+#10 7.876   Generating static pages using 3 workers (2/4) 
+#10 7.877   Generating static pages using 3 workers (3/4) 
+#10 7.877 ✓ Generating static pages using 3 workers (4/4) in 255ms
+#10 7.883   Finalizing page optimization ...
+#10 8.127 
+#10 8.130 Route (app)
+#10 8.130 ┌ ○ /
+#10 8.130 └ ○ /_not-found
+#10 8.130 
+#10 8.130 
+#10 8.130 ○  (Static)  prerendered as static content
+#10 8.130 
+#10 DONE 8.2s
+
+#11 [runner 3/7] RUN addgroup --system --gid 1001 nodejs
+#11 CACHED
+
+#12 [runner 4/7] RUN adduser --system --uid 1001 nextjs
+#12 CACHED
+
+#13 [runner 5/7] COPY --from=builder /app/public ./public
+#13 DONE 0.0s
+
+#14 [runner 6/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+#14 DONE 0.3s
+
+#15 [runner 7/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 1.9s done
+#16 exporting manifest sha256:e70ccff259a6608abcc382bf2077f4b53e53f36a7a88b4bceae59e855397f46c done
+#16 exporting config sha256:18c84a626e8d466053b458a778c2207a50595b7b3780de6519399225c2aa64cc done
+#16 pushing layers for registry.fly.io/healthflow-web:deployment-01KSFV9RB7FH51E6S2744717D2@sha256:e70ccff259a6608abcc382bf2077f4b53e53f36a7a88b4bceae59e855397f46c
+#16 pushing layer sha256:4fa8df0f293156d57e66bd1b04d0d376347a9cb0b4615c8293b80219ef98e6f5
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48 0.1s done
+#16 pushing layer sha256:18c84a626e8d466053b458a778c2207a50595b7b3780de6519399225c2aa64cc
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f
+#16 pushing layer sha256:920d546c1e8fdd7c304362f20adb62172e1f6d567fc0bab4767d37e2ac8df844
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4 0.1s done
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe
+#16 pushing layer sha256:ff67bf83b002c4f616554c9243db80078ec234dfa426287983ae336ca7e1128a
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c 0.2s done
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb 0.3s done
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe 0.5s done
+#16 pushing layer sha256:4fa8df0f293156d57e66bd1b04d0d376347a9cb0b4615c8293b80219ef98e6f5 0.6s done
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f 0.6s done
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093 0.6s done
+#16 pushing layer sha256:18c84a626e8d466053b458a778c2207a50595b7b3780de6519399225c2aa64cc 0.7s done
+#16 pushing layer sha256:920d546c1e8fdd7c304362f20adb62172e1f6d567fc0bab4767d37e2ac8df844 0.7s done
+#16 pushing layers for registry.fly.io/healthflow-web:deployment-01KSFV9RB7FH51E6S2744717D2@sha256:e70ccff259a6608abcc382bf2077f4b53e53f36a7a88b4bceae59e855397f46c 1.0s done
+#16 pushing layer sha256:ff67bf83b002c4f616554c9243db80078ec234dfa426287983ae336ca7e1128a 1.0s done
+#16 pushing manifest for registry.fly.io/healthflow-web:deployment-01KSFV9RB7FH51E6S2744717D2@sha256:e70ccff259a6608abcc382bf2077f4b53e53f36a7a88b4bceae59e855397f46c
+#16 pushing manifest for registry.fly.io/healthflow-web:deployment-01KSFV9RB7FH51E6S2744717D2@sha256:e70ccff259a6608abcc382bf2077f4b53e53f36a7a88b4bceae59e855397f46c 0.1s done
+#16 DONE 3.0s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/healthflow-web:deployment-01KSFV9RB7FH51E6S2744717D2
+image size: 61 MB
+
+Watch your deployment at https://fly.io/apps/healthflow-web/monitoring
+
+Provisioning ips for healthflow-web
+  Dedicated ipv6: 2a09:8280:1::11a:fcd3:0
+  Shared ipv4: 66.241.125.216
+  Add a dedicated ipv4 with: fly ips allocate-v4
+
+This deployment will:
+ * create 1 "app" machine
+
+> Launching new machine
+No machines in group app, launching a new machine
+> Machine 7845e19f246408 [app] was created
+✔ Machine 7845e19f246408 [app] update finished: success
+Finished launching new machines
+
+
+NOTE: The machines for [app] have services with 'auto_stop_machines = "stop"' that will be stopped when idling
+
+Checking DNS configuration for healthflow-web.fly.dev
+✓ DNS configuration verified
+
+Visit your newly deployed app at https://healthflow-web.fly.dev/
+
+✅ Deployed healthflow-frontend successfully
+
+>>> Processing mixflow-frontend...
+Updating next.config.ts for standalone build...
+✅ Created deployment files for mixflow-frontend
+Creating Fly.io app: mixflow-web...
+New app created: mixflow-web
+Deploying mixflow-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/mixflow-frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 633B 0.2s
+#1 transferring dockerfile: 633B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.1s done
+#3 DONE 0.1s
+
+#4 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#4 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 42.39MB 5.1s
+#5 transferring context: 110.87MB 10.1s
+#5 transferring context: 179.70MB 15.2s
+#5 transferring context: 250.05MB 20.2s
+#5 transferring context: 318.22MB 25.4s
+#5 transferring context: 390.45MB 30.4s
+#5 transferring context: 456.58MB 35.5s
+#5 transferring context: 523.72MB 40.6s
+#5 transferring context: 591.33MB 45.7s
+#5 transferring context: 595.17MB 46.1s done
+#5 DONE 46.2s
+
+#6 [builder 2/6] WORKDIR /app
+#6 CACHED
+
+#7 [builder 3/6] COPY package*.json ./
+#7 DONE 2.0s
+
+#8 [builder 4/6] RUN npm ci
+#8 15.14 
+#8 15.14 added 400 packages, and audited 401 packages in 15s
+#8 15.14 
+#8 15.14 147 packages are looking for funding
+#8 15.14   run `npm fund` for details
+#8 15.32 
+#8 15.32 3 vulnerabilities (2 moderate, 1 high)
+#8 15.32 
+#8 15.32 To address issues that do not require attention, run:
+#8 15.32   npm audit fix
+#8 15.32 
+#8 15.32 To address all issues, run:
+#8 15.32   npm audit fix --force
+#8 15.32 
+#8 15.32 Run `npm audit` for details.
+#8 15.32 npm notice
+#8 15.32 npm notice New major version of npm available! 10.8.2 -> 11.15.0
+#8 15.32 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.15.0
+#8 15.32 npm notice To update run: npm install -g npm@11.15.0
+#8 15.32 npm notice
+#8 DONE 19.6s
+
+#9 [builder 5/6] COPY . .
+#9 DONE 11.4s
+
+#10 [builder 6/6] RUN npm run build
+#10 0.442 
+#10 0.442 > mixflow-frontend@0.1.0 build
+#10 0.442 > next build
+#10 0.442 
+#10 1.109 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 1.110 This information is used to shape Next.js' roadmap and prioritize features.
+#10 1.110 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 1.110 https://nextjs.org/telemetry
+#10 1.110 
+#10 1.132 ▲ Next.js 16.2.4 (Turbopack)
+#10 1.132 - Environments: .env.local
+#10 1.132 
+#10 1.259   Creating an optimized production build ...
+#10 6.149 ✓ Compiled successfully in 4.6s
+#10 6.164   Running TypeScript ...
+#10 11.04   Finished TypeScript in 4.9s ...
+#10 11.05   Collecting page data using 3 workers ...
+#10 11.72   Generating static pages using 3 workers (0/31) ...
+#10 12.03   Generating static pages using 3 workers (7/31) 
+#10 12.12   Generating static pages using 3 workers (15/31) 
+#10 12.25   Generating static pages using 3 workers (23/31) 
+#10 12.35 ✓ Generating static pages using 3 workers (31/31) in 628ms
+#10 12.36   Finalizing page optimization ...
+#10 12.73 
+#10 12.74 Route (app)
+#10 12.74 ┌ ○ /
+#10 12.74 ├ ○ /_not-found
+#10 12.74 ├ ƒ /api/auth/forgot-password
+#10 12.74 ├ ƒ /api/auth/login
+#10 12.74 ├ ƒ /api/auth/register
+#10 12.74 ├ ƒ /api/auth/reset-password
+#10 12.74 ├ ○ /collaborate
+#10 12.74 ├ ○ /community
+#10 12.74 ├ ○ /courses
+#10 12.74 ├ ○ /effects
+#10 12.74 ├ ○ /export
+#10 12.74 ├ ○ /forgot-password
+#10 12.74 ├ ○ /login
+#10 12.74 ├ ○ /marketplace
+#10 12.74 ├ ○ /meal-plans
+#10 12.74 ├ ○ /mixer
+#10 12.74 ├ ○ /plugins
+#10 12.74 ├ ○ /presets
+#10 12.74 ├ ○ /profile
+#10 12.74 ├ ○ /projects
+#10 12.74 ├ ○ /recipes
+#10 12.74 ├ ○ /register
+#10 12.74 ├ ○ /reset-password
+#10 12.74 ├ ○ /samples
+#10 12.74 ├ ○ /settings
+#10 12.74 ├ ○ /showcase
+#10 12.74 ├ ○ /templates
+#10 12.74 ├ ○ /tracks
+#10 12.74 └ ○ /tutorials
+#10 12.74 
+#10 12.74 
+#10 12.74 ○  (Static)   prerendered as static content
+#10 12.74 ƒ  (Dynamic)  server-rendered on demand
+#10 12.74 
+#10 DONE 12.9s
+
+#11 [runner 4/7] RUN adduser --system --uid 1001 nextjs
+#11 CACHED
+
+#12 [runner 3/7] RUN addgroup --system --gid 1001 nodejs
+#12 CACHED
+
+#13 [runner 5/7] COPY --from=builder /app/public ./public
+#13 CACHED
+
+#14 [runner 6/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+#14 DONE 0.3s
+
+#15 [runner 7/7] COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 2.0s done
+#16 exporting manifest sha256:b3d0b961164596da637fc5e05a4601862fa56b3bb96a0fd92daf7cdf93f8b660 done
+#16 exporting config sha256:35d666121b0f36ad651b7e2308deaebf9b32f430bf560dc0c344c65598645285 done
+#16 pushing layers for registry.fly.io/mixflow-web:deployment-01KSFVD635Q45A8M8870F7XAFV@sha256:b3d0b961164596da637fc5e05a4601862fa56b3bb96a0fd92daf7cdf93f8b660
+#16 pushing layer sha256:ac826414ee17e491c97ce4bf8c2f9596aae06166ce74b2f9c08c1574bfb3a5d5
+#16 pushing layer sha256:35d666121b0f36ad651b7e2308deaebf9b32f430bf560dc0c344c65598645285
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb
+#16 pushing layer sha256:8e554516d4cdae7a8f0915ae43c1048060d5fb15a14eda0d23a6fcca3242ad2c 0.1s done
+#16 pushing layer sha256:ac8f8b3ab983f0c72ad132911cd8ba1b1d7451765f0cbe6d2074ebdf59e18bbe 0.1s done
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093
+#16 pushing layer sha256:30592674c13049ce424b8deb9223e718c8ecd50adfe54b6b782a8aa9ecf7b3be
+#16 pushing layer sha256:1460ac9a9ffccaaa4a59031fb7224599841258b3ee8e02c32f67fc26da072429
+#16 pushing layer sha256:1c7f9b6c07a76147766c1efbea9c1fba8d3bc76d8cbece5c13abe8afc1ffc36f 0.2s done
+#16 pushing layer sha256:79162180734b88ff8cc67216853fcd9fe1fc55fc61873d5bfd6e8f93d0897bf4 0.6s done
+#16 pushing layer sha256:ac826414ee17e491c97ce4bf8c2f9596aae06166ce74b2f9c08c1574bfb3a5d5 0.7s done
+#16 pushing layer sha256:35d666121b0f36ad651b7e2308deaebf9b32f430bf560dc0c344c65598645285 0.7s done
+#16 pushing layer sha256:4b0509c947003be1323a5a38977845d73b4980e37144df3290035d51059ccb48 0.6s done
+#16 pushing layer sha256:c59f4feb5aa577638f9280b984a9bdd2d8a599eafeb85538ea635e3a54545cdb 0.6s done
+#16 pushing layer sha256:a92ce75c119d175ec70a449ea9160a84ab4cff32df051d79a45970083696a093 0.6s done
+#16 pushing layer sha256:30592674c13049ce424b8deb9223e718c8ecd50adfe54b6b782a8aa9ecf7b3be 0.6s done
+#16 pushing layers for registry.fly.io/mixflow-web:deployment-01KSFVD635Q45A8M8870F7XAFV@sha256:b3d0b961164596da637fc5e05a4601862fa56b3bb96a0fd92daf7cdf93f8b660 1.1s done
+#16 pushing layer sha256:1460ac9a9ffccaaa4a59031fb7224599841258b3ee8e02c32f67fc26da072429 1.1s done
+#16 pushing manifest for registry.fly.io/mixflow-web:deployment-01KSFVD635Q45A8M8870F7XAFV@sha256:b3d0b961164596da637fc5e05a4601862fa56b3bb96a0fd92daf7cdf93f8b660
+#16 pushing manifest for registry.fly.io/mixflow-web:deployment-01KSFVD635Q45A8M8870F7XAFV@sha256:b3d0b961164596da637fc5e05a4601862fa56b3bb96a0fd92daf7cdf93f8b660 0.1s done
+#16 DONE 3.3s
+--> Build Summary:  (​)
+[38;5;252m--> Building image done[0m
+image: registry.fly.io/mixflow-web:deployment-01KSFVD635Q45A8M8870F7XAFV
+image size: 61 MB
+
+Watch your deployment at https://fly.io/apps/mixflow-web/monitoring
+
+Provisioning ips for mixflow-web
+  Dedicated ipv6: 2a09:8280:1::11a:fcf6:0
+  Shared ipv4: 66.241.124.127
+  Add a dedicated ipv4 with: fly ips allocate-v4
+
+This deployment will:
+ * create 1 "app" machine
+
+> Launching new machine
+No machines in group app, launching a new machine
+> Machine d89754b4636078 [app] was created
+✔ Machine d89754b4636078 [app] update finished: success
+Finished launching new machines
+
+
+NOTE: The machines for [app] have services with 'auto_stop_machines = "stop"' that will be stopped when idling
+
+Checking DNS configuration for mixflow-web.fly.dev
+✓ DNS configuration verified
+
+Visit your newly deployed app at https://mixflow-web.fly.dev/
+
+✅ Deployed mixflow-frontend successfully
+
+=========================================
+Deployment Complete!
+=========================================
+
+Frontend URLs:
+  diaperstops: https://diaperstops-web.fly.dev
+  propai: https://propai-web.fly.dev
+  finder: https://finder-web.fly.dev
+  hypnotic: https://hypnotic-web.fly.dev
+  healthflow: https://healthflow-web.fly.dev
+  mixflow: https://mixflow-web.fly.dev
+
+Cost estimate: ~./deploy-frontends-minimal.sh-2/month (auto-stop when idle)
