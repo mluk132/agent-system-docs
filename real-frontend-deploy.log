@@ -1,0 +1,1154 @@
+=========================================
+Deploying REAL React Frontends
+=========================================
+
+>>> Processing propai (propai-backend/frontend)...
+✅ Created deployment files for propai
+Deploying propai-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/propai-backend/frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 29.45MB 5.1s
+#5 transferring context: 37.51MB 10.2s
+#5 ...
+
+#6 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#6 ...
+
+#7 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#7 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598#7 transferring context: 69.17MB 15.1s
+#7 transferring context: 121.20MB 20.2s
+#7 transferring context: 251.83MB 25.2s
+#7 transferring context: 276.32MB 26.2s done
+#7 DONE 26.6s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 Deduplicating step ID [builder 4/6] RUN npm ci, another build is calculating it done
+#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 7.966 npm error code EUSAGE
+#10 7.966 npm error code EUSAGE
+#10 7.966 npm error
+#10 7.966 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#10 7.966 npm error
+#10 7.966 npm error Missing: yaml@2.9.0 from lock file
+#10 7.966 npm error
+#10 7.966 npm error Clean install a project
+#10 7.966 npm error
+#10 7.966 npm error Usage:
+#10 7.966 npm error npm ci
+#10 7.966 npm error
+#10 7.966 npm error Options:
+#10 7.966 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#10 7.966 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#10 7.966 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#10 7.966 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#10 7.966 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#10 7.966 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#10 7.966 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#10 7.966 npm error
+#10 7.966 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#10 7.966 npm error
+#10 7.966 npm error #11 7.968 npm notice
+#11 7.968 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 7.968 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 7.968 npm notice To update run: npm install -g npm@11.16.0
+#11 7.968 npm notice
+#11 7.969 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_22_56_853Z-debug-0.log
+#11 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+
+#12 [builder 3/6] COPY package*.json ./
+#12 Deduplicating step ID [builder 3/6] COPY package*.json ./, another build is calculating it done
+------
+ > [build------
+ > [builder 4/6] RUN npm ci:
+7.966 npm error
+7.966 npm error aliases: clean-install, ic, install-clean, isntall-clean
+7.966 npm error
+7.966 npm error Run "npm help ci" for more info
+7.968 npm notice
+7.968 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+7.968 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+7.968 npm notice To update run: npm install -g npm@11.16.0
+7.968 npm notice
+7.969 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_22_56_853Z-deb==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5#4 DONE 0.1s
+
+#5 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#5 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a 0.0s done
+#5 CACHED
+
+#6 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#6 DONE 0.0s
+
+#7 [internal] loa#7 transferring context: 6.08MB 5.0s
+#7 transferring context: 6.54MB 5.7s done
+#7 DONE 5.8s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 Deduplicatin#10 1.574 npm error code EUSAGE
+#10 1.574 npm error
+#10 1.574 npm error `#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.574 npm error code EUSAGE
+#11 1.574 npm error
+#11 1.574 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.574 npm error
+#11 1.574 npm error Missing: yaml@2.9.0 from lock file
+#11 1.574 npm error
+#11 1.574 npm error Clean install a project
+#11 1.574 npm error
+#11 1.574 npm error Usage:
+#11 1.574 npm error npm ci
+#11 1.574 npm error
+#11 1.574 npm error Options:
+#11 1.574 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.574 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.574 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.574 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.574 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.574 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.574 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.574 npm error
+#11 1.574 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 1.574 npm error
+#11 1.574 npm error Run "npm help ci" for more info
+#11 1.577 npm notice
+#11 1.577 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 1.577 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 1.577 npm notice To update run: npm install -g npm@11.16.0
+#11 1.577 npm notice
+#11 1.577 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-0------
+ > [builder 4/6] RUN npm ci:
+1.574 npm error
+1.574 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.574 npm error
+1.574 npm error Run "npm help ci" for more info
+1.577 npm notice
+1.577 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.577 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.577 npm notice To update run: npm install -g npm@11.16.0
+1.577 npm notice
+1.577 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_23_09_998Z-debug-0.log
+------
+Error: failed to fetch an image or build from source: error building: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+⚠️  Deployment failed for propai
+
+>>> Processing healthflow (healthflow-backend/frontend)...
+✅ Created deployment files for healthflow
+Deploying healthflow-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/healthflow-backend/frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 0.1s
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#5 DONE 0.0s
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#6 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a 0.0s done
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 27.07MB 5.0s
+#7 transferring context: 35.74MB 10.0s
+#7 transferring context: 83.41MB 15.0s
+#7 transferring context: 128.62MB 20.1s
+#7 transferring context: 213.55MB 25.1s
+#7 transferring context: 276.32MB 27.3s done
+#7 DONE 27.6s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 2.042 npm error code EUSAGE
+#10 2.042 npm error
+#10 2.042 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#10 2.042 npm error
+#10 2.042 npm error Missing: yaml@2.#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 2.042 npm error code EUSAGE
+#11 2.042 npm error
+#11 2.042 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 2.042 npm error
+#11 2.042 npm error Missing: yaml@2.9.0 from lock file
+#11 2.042 npm error
+#11 2.042 npm error Clean install a project
+#11 2.042 npm error
+#11 2.042 npm error Usage:
+#11 2.042 npm error npm ci
+#11 2.042 npm error
+#11 2.042 npm error Options:
+#11 2.042 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 2.042 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 2.042 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 2.042 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 2.042 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 2.042 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 2.042 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 2.042 npm error
+#11 2.042 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 2.042 npm error
+#11 2.042 npm error Run "npm help ci" for more info
+#11 2.045 npm notice
+#11 2.045 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 2.045 npm not------
+ > [builder 4/6] RUN npm ci:
+2.042 npm error
+2.042 npm error aliases: clean-install, ic, install-clean, isntall-clean
+2.042 npm error
+2.042 npm error Run "npm help ci" for more info
+2.045 npm notice
+2.045 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+2.045 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+2.045 npm notice To update run: npm install -g npm@11.16.0
+2.045 npm notice
+2.045 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_23_44_215Z-debug-0.log
+------
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 0.0s
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#5 DONE 0.0s
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve#7 transferring context: 6.54MB 5.0s done
+#7 DONE 5.2s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 1.619 npm error code EUSAGE
+#10 1.619 npm error
+#10 1.619 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#10 1.619 npm error
+#10 1.619 npm error Missing: yaml@2.9.0 from lock file
+#10 1.619 npm error
+#10 1.619 npm error Clean install a project
+#10 1.619 npm error
+#10 1.619 npm error Usage:
+#10 1.619 npm error npm ci
+#10 1.619 npm error
+#10 1.619 npm erro#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.619 npm error code EUSAGE
+#11 1.619 npm error
+#11 1.619 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.619 npm error
+#11 1.619 npm error Missing: yaml@2.9.0 from lock file
+#11 1.619 npm error
+#11 1.619 npm error Clean install a project
+#11 1.619 npm error
+#11 1.619 npm error Usage:
+#11 1.619 npm error npm ci
+#11 1.619 npm error
+#11 1.619 npm error Options:
+#11 1.619 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.619 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.619 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.619 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.619 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.619 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.619 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.619 npm error
+#11 1.619 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 1.619 npm error
+#11 1.619 npm error Run "npm help ci" for more info
+#11 1.622 npm notice
+#11 1.622 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 1.622 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 1.622 npm notice To update run: npm install -g npm@11.16.0
+#11 1.622 npm notice
+#11 1.622 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_23_55_831Z-debug-0.log
+#11 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+------
+Error: failed to fetch an image or build from source: error building: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+⚠️  Deployment failed for healthflow
+
+>>> Processing finder (finder-backend/frontend)...
+✅ Created deployment files for finder
+Deploying finder-app-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/finder-backend/frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.2s
+#1 transferring dockerfile: 530B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 31.34MB 5.0s
+#5 ...
+
+#6 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#6 ...
+
+#7 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#7 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a done
+#7 ...
+
+#5 [internal] load build context
+#5 transferring context: 87.67MB 10.3s
+#5 transferring context: 172.89MB 15.4s
+#5 transferring context: 276.32MB 19.1s done
+#5 DONE 19.8s
+
+#6 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#6 ...
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 1.931 npm error code EUSAGE
+#10 1.931 npm error
+#10 1.931 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#10 1.931 npm error
+#10 1.931 npm error Missing: yaml@2.9.0 from lock file
+#10 1.931 npm error
+#10 1.931 npm error Clean install a project
+#10 1.931 npm error
+#10 1.931 npm error Usage:
+#10 1.931 npm error npm ci
+#10 1.931 npm error
+#10 1.#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.931 npm error code EUSAGE
+#11 1.931 npm error
+#11 1.931 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.931 npm error
+#11 1.931 npm error Missing: yaml@2.9.0 from lock file
+#11 1.931 npm error
+#11 1.931 npm error Clean install a project
+#11 1.931 npm error
+#11 1.931 npm error Usage:
+#11 1.931 npm error npm ci
+#11 1.931 npm error
+#11 1.931 npm error Options:
+#11 1.931 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.931 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.931 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.931 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.931 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.931 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.931 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.931 npm er#10 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+
+#6 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+------
+ > [builder 4/6] RUN npm ci:
+1.931 npm error
+1.931 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.931 npm error
+1.931 npm error Run "npm help ci" for more info
+1.933 npm notice
+1.933 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.933 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.933 npm notice To update run: npm install -g npm@11.16.0
+1.933 npm notice
+1.933 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_24_21_851Z-debug-0.log
+------
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#5 DONE 0.0s
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#6 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a 0.0s done
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 6.31MB 5.1s
+#7 transferring context: 6.54MB 5.4s done
+#7 DONE 5.5s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 Deduplicating step ID [builder 4/6] RUN npm ci, another build is calculating it done
+#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.598 npm error code EUSAGE
+#11 1.598 npm error
+#11 1.598 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.598 npm error
+#11 1.598 npm error Missing: yaml@2.9.0 from lock file
+#11 1.598 npm error
+#11 1.598 npm error Clean install a project
+#11 1.598 npm error
+#11 1.598 npm error Usage:
+#11 1.598 npm error npm ci
+#11 1.598 npm error
+#11 1.598 npm error Options:
+#11 1.598 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.598 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.598 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.598 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.598 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.598 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.598 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.598 npm error
+#11 1.598 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 1.598 npm error
+#11 1.598 npm error Run "npm help ci" for more info
+#11 1.602 npm notice
+#11 1.602 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 1.602 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 1.602 npm notice To update run: npm install -g npm@11.16.0
+#11 1.602 npm notice
+#11 1.603 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_24_35_859Z-debug-0.log
+#11 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+------
+ > [builder 4/6] RUN npm ci:
+1.598 npm error
+1.598 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.598 npm error
+1.598 npm error Run "npm help ci" for more info
+1.602 npm notice
+1.602 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.602 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.602 npm notice To update run: npm install -g npm@11.16.0
+1.602 npm notice
+1.603 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_24_35_859Z-debug-0.log
+------
+Error: failed to fetch an image or build from source: error building: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+⚠️  Deployment failed for finder
+
+>>> Processing hypnotic (hypnotic-backend/frontend)...
+✅ Created deployment files for hypnotic
+Deploying hypnotic-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/hypnotic-backend/frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 30.79MB 5.0s
+#5 transferring context: 66.74MB 10.1s
+#5 ...
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#6 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a done
+#6 ...
+
+#7 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#7 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#7 ...
+
+#5 [internal] load build context
+#5 transferring context: 153.36MB 15.1s
+#5 transferring context: 276.32MB 18.8s done
+#5 DONE 19.5s
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#6 ...
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 Deduplicating step ID [builder 4/6] RUN npm ci, another build is calculating it done
+#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.816 npm error code EUSAGE
+#11 1.816 npm error
+#11 1.816 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.816 npm error
+#11 1.816 npm error Missing: yaml@2.9.0 from lock file
+#11 1.816 npm error
+#11 1.816 npm error Clean install a project
+#11 1.816 npm error
+#11 1.816 npm error Usage:
+#11 1.816 npm error npm ci
+#11 1.816 npm error
+#11 1.816 npm error Options:
+#11 1.816 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.816 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.816 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.816 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.816 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.816 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.816 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.816 npm error
+#11 1.816 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 1.816 npm error
+#11 1.816 npm error Run "npm help ci" for more info
+#11 1.818 npm notice
+#11 1.818 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 1.818 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 1.818 npm notice To update run: npm install -g npm@11.16.0
+#11 1.818 npm notice
+#11 1.818 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_25_00_648Z-debug-0.log
+#11 ERROR: process "/bin/sh -c npm ci" did not complet#10 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+------
+ > [builder 4/6] RUN npm ci:
+1.816 npm error
+1.816 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.816 npm error
+1.816 npm error Run "npm help ci" for more info
+1.818 npm notice
+1.818 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.818 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.818 npm notice To update run: npm install -g npm@11.16.0
+1.818 npm notice
+1.818 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_25_00_648Z-debug-0.log
+------
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpin==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.2s
+#1 transferring dockerfile: 530B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a0#7 transferring context: 6.54MB 3.8s done
+#7 DONE 4.0s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 1.593 npm error code EUSAGE
+#10 1.593 npm error
+#10 1.593 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#10 1.593 npm error
+#10 1.593 npm error Missing: yaml@2.9.0 from lock file
+#10 1.593 npm error
+#10 1.593 npm error Clean install a project
+#10 1.593 npm error
+#10 1.#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.593 npm error code EUSAGE
+#11 1.593 npm error
+#11 1.593 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.593 npm error
+#11 1.593 npm error Missing: yaml@2.9.0 from lock file
+#11 1.593 npm error
+#11 1.593 npm error Clean install a project
+#11 1.593 npm error
+#11 1.593 npm error Usage:
+#11 1.593 npm error npm ci
+#11 1.593 npm error
+#11 1.593 npm error Options:
+#11 1.593 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.593 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.593 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.593 npm error [--strict-peer-deps] [--#10 1.596 npm notice
+#10 1.596 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#10 1.596 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#10 1.596 npm notice To update run: npm install -g npm@11.16.0
+#10 1.596 npm notice
+#10 1.596 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_25_13_434Z-debug-0.log
+#10 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+------
+ > [builder 4/6] RUN npm ci:
+1.593 npm error
+1.593 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.593 npm error
+1.593 npm error Run "npm help ci" for more info
+1.596 npm notice
+1.596 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.596 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.596 npm notice To update run: npm install -g npm@11.16.0
+1.596 npm notice
+1.596 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_25_13_434Z-debug-0.log
+------
+Error: failed to fetch an image or build from source: error building: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+⚠️  Deployment failed for hypnotic
+
+>>> Processing mixflow (mixflow-backend/frontend)...
+✅ Created deployment files for mixflow
+Deploying mixflow-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/mixflow-backend/frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#5 DONE 0.0s
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#6 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a done
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 32.87MB 5.0s
+#7 transferring context: 91.33MB 10.1s
+#7 transferring context: 242.96MB 15.2s
+#7 transferring context: 276.32MB 16.9s done
+#7 DONE 17.6s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 Deduplicating step ID [builder 4/6] RUN npm ci, another build is calculating it done
+#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.895 npm error code EUSAGE
+#11 1.895 npm error
+#11 1.895 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.895 npm error
+#11 1.895 npm error Missing: yaml@2.9.0 from lock file
+#11 1.895 npm error
+#11 1.895 npm error Clean install a project
+#11 1.895 npm error
+#11 1.895 npm error Usage:
+#11 1.895 npm error npm ci
+#11 1.895 npm error
+#11 1.895 npm error Options:
+#11 1.895 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.895 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.895 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.895 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.895 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.895 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.895 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.895 npm error
+#11 1.895 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 1.895 npm error
+#11 1.895 npm error Run "npm help ci" for more info
+#11 1.897 npm notice
+#11 1.897 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 1.897 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 1.897 npm notice To update run: npm install -g npm@11.16.0
+#11 1.897 npm notice
+#11 1.897 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_25_36_132Z-debug-0.log
+#11 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+
+#12 [builder 3/6] COPY package*.json ./
+#12 Deduplicating step ID [builder 3/6] COPY package*.json ./, another build is calculating it done
+------
+ > [builder 4/6] RUN npm ci:
+1.895 npm error
+1.895 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.895 npm error
+1.895 npm error Run "npm help ci" for more info
+1.------
+ > [builder 4/6] RUN npm ci:
+1.895 npm error
+1.895 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.895 npm error
+1.895 npm error Run "npm help ci" for more info
+1.897 npm notice
+1.897 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.897 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.897 ==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.1s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.3s
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.0s done
+#5 DONE 0.0s
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc88165#7 transferring context: 6.54MB 3.7s done
+#7 DONE 3.9s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 1.592 npm error code EUSAGE
+#10 1.592 npm error
+#10 1.592 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#10 1.592 npm error
+#10 1#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.592 npm error code EUSAGE
+#11 1.592 npm error
+#11 1.592 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.592 npm error
+#11 1.592 npm error Missing: yaml@2.9.0 from lock file
+#11 1.592 npm error
+#11 1.592 npm error Clean install a project
+#11 1.592 npm error
+#11 1.592 npm error Usage:
+#11 1.592 npm error npm ci
+#11 1.592 npm error
+#11 1.592 npm error Options:
+#11 1.592 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.592 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.592 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.592 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.592 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.592 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.592 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.592 npm error
+#11 1.592 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 1.592 npm error
+#11 1.592 npm error Run "npm help ci" for more info
+#11 1.594 npm notice
+#11 1.594 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 1.594 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 1.594 npm notice To update run: npm install -g npm@11.16.0
+#11 1.594 npm notice
+#11 1.595 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_25_50_845Z-debug-0.log
+#11 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+------
+ > [builder 4/6] RUN npm ci:
+1.592 npm error
+1.592 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.592 npm error
+1.592 npm error Run "npm help ci" for more info
+1.594 npm notice
+1.594 npm notice New major Error: failed to fetch an image or build from source: error building: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+⚠️  Deployment failed for mixflow
+
+>>> Processing diaperstops (diaperstops-backend/frontend)...
+✅ Created deployment files for diaperstops
+Deploying diaperstops-web...
+==> Verifying app config
+Validating /home/droid/projects/projects/diaperstops-backend/frontend/fly.toml
+[32m✓[0m Configuration is valid
+--> Verified app config
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/nginx:alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/node:20-alpine
+#3 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/nginx:alpine
+#2 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f6#7 transferring context: 35.48MB 5.1s
+#7 transferring context: 83.61MB 10.2s
+#7 transferring context: 165.34MB 15.3s
+#7 transferring context: 279.10MB 17.8s done
+#7 DONE 18.2s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 3/6] COPY package*.json ./
+#10 Deduplicating step ID [builder 3/6] COPY package*.json ./, another build is calculating it done
+#10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.927 npm error code EUSAGE
+#11 1.927 npm error
+#11 1.927 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.927 npm error
+#11 1.927 npm error Missing: yaml@2.9.0 from lock file
+#11 1.927 npm error
+#11 1.927 npm error Clean install a project
+#11 1.927 npm error
+#11 1.927 npm error Usage:
+#11 1.927 npm error npm ci
+#11 1.927 npm error
+#11 1.927 npm error Options:
+#11 1.927 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.927 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.927 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.927 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.927 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.927 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.927 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.927 npm error
+#11 1.927 npm error aliases: clean-install, ic, install-clean, isntall-clean
+#11 1.927 npm error
+#11 1.927 npm error Run "npm help ci" for more info
+#11 1.930 npm notice
+#11 1.930 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#11 1.930 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 1.930 npm notice To update run: npm install -g npm@11.16.0
+#11 1.930 npm notice
+#11 1.931 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_26_13_046Z-debug-0.log
+#11 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+
+#12 [builder 4/6] RUN npm ci
+#12 Deduplicating step ID [builder 4/6] RUN npm ci, another#10 ERROR: process "/bin/sh -c------
+ > [builder 4/6] RUN npm ci:
+1.927 npm error
+1.927 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.927 npm error
+1.927 npm error Run "npm help ci" for more info
+1.930 npm notice
+1.930 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.930 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.930 npm notice To update run: npm install -g npm@11.16.0
+1.930 npm notice
+1.931 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_26_13_046Z-debug-0.log
+------
+==> Building image
+Waiting for depot builder...
+
+==> Building image with Depot
+--> build:  (​)
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 530B 0.2s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/ng
+#3 [intern#3 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.1s done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#5 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 done
+#5 DONE 0.0s
+
+#6 [runner 1/3] FROM docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a
+#6 resolve docker.io/library/nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a done
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 6.54MB 2.1s done
+#7 DONE 2.3s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/6] COPY package*.json ./
+#9 CACHED
+
+#10 [builder 4/6] RUN npm ci
+#10 Deduplicating step ID [builder 4/6] RUN npm ci, a#10 1.571 npm error code EUSAGE
+#10 #10 ...
+
+#11 [builder 4/6] RUN npm ci
+#11 1.571 npm error code EUSAGE
+#11 1.571 npm error
+#11 1.571 npm error `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
+#11 1.571 npm error
+#11 1.571 npm error Missing: yaml@2.9.0 from lock file
+#11 1.571 npm error
+#11 1.571 npm error Clean install a project
+#11 1.571 npm error
+#11 1.571 npm error Usage:
+#11 1.571 npm error npm ci
+#11 1.571 npm error
+#11 1.571 npm error Options:
+#11 1.571 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+#11 1.571 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+#11 1.571 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+#11 1.571 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+#11 1.571 npm error [--no-bin-links] [--no-fund] [--dry-run]
+#11 1.571 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+#11 1.571 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+#11 1.571 npm error
+#11 1.571 npm error aliases: clean-install, ic, install-clean, isntall-clea#10 1.574 npm notice
+#10 1.574 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+#10 1.574 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#10 1.574 npm notice To update run: npm install -g npm@11.16.0
+#10 1.574 npm notice
+#10 1.574 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_26_26_655Z-debug-0.log
+#10 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
+------
+ > [builder 4/6] RUN npm ci:
+1.571 npm error
+1.571 npm error aliases: clean-install, ic, install-clean, isntall-clean
+1.571 npm error
+1.571 npm error Run "npm help ci" for more info
+1.574 npm notice
+1.574 npm notice New major version of npm available! 10.8.2 -> 11.16.0
+1.574 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+1.574 npm notice To update run: npm install -g npm@11.16.0
+1.574 npm notice
+1.574 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-06-02T08_26_26_655Z-debug-0.log
+------
+Error: failed to fetch an image or build from source: error building: failError: failed to fetch an image or build from source: error building: failed to solve⚠️  Deployment failed for diaperstops
+
+===============================⚠️  Deployment failed for diaperstops
+
+=========================================
+Deployment Complete!
+=========================================
+
+Frontend URLs:
+  PropAI: https://propai-web.fly.dev
+  HealthFlow: https://healthflow-web.fly.dev
+  Finder: https://finder-app-web.fly.dev
+  Hypnotic: https://hypnotic-web.fly.dev
+  MixFlow: https://mixflow-web.fly.dev
+  DiaperStops: https://diaperstops-web.fly.dev
+
+Cost estimate: ~./deploy-real-frontends.sh-2/month per frontend (auto-stop when idle)
